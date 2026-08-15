@@ -102,10 +102,17 @@
         /* SİHİRLİ KISIM 2: EĞER ÇERÇEVEYE FOTOĞRAF EKLENDİYSE ÇALIŞACAK KOD */
         .frame img {
             width: 100%;
-            height: auto; /* Orijinal boyutu korur, kırpmaz */
+            height: auto;
             border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             display: block;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            /* Büyüme efektinin yumuşak olması için: */
+            transition: transform 0.4s ease; 
+        }
+
+        /* Fotoğrafın üzerine gelindiğinde çalışacak kod: */
+        .frame img:hover {
+            transform: scale(1.03); /* Fotoğrafı %3 oranında büyütür */
         }
 
         /* BOŞ ÇERÇEVELERİN GEÇİCİ BOYUTLARI (Fotoğraf gelince iptal olurlar) */
