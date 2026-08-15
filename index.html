@@ -7,6 +7,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
+        /* YUMUŞAK VE MIKNATISLI SAYFA KAYDIRMA (SCROLL SNAP) */
+        html {
+            scroll-snap-type: y mandatory; /* Y (dikey) eksende sayfanın bölümlere yapışmasını zorunlu kılar */
+            scroll-behavior: smooth; /* Kaydırmanın animasyonlu ve yumuşak olmasını sağlar */
+        }
+
+        /* Tüm ana bölümleri (Giriş, Anılar, Kapanış) birer "durak" olarak belirliyoruz */
+        .intro-section, 
+        .section, 
+        .finale {
+            scroll-snap-align: center; /* Kaydırma bittiğinde bölümü ekranın tam ortasına hizalar */
+            scroll-snap-stop: always; /* Fare tekerleğini çok hızlı çevirse bile sayfaları atlamayıp tek tek durdurur */
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Montserrat', sans-serif;
@@ -457,12 +470,111 @@
             .frame:not(:has(img)) { min-height: 300px !important; width: 100% !important; }
             .g-1 .frame { max-width: 100%; }
         }
+        /* --- GİRİŞ SAYFASI YENİ EKLENTİLER --- */
+        .intro-section {
+            position: relative; /* Scroll butonu için gerekli */
+        }
+
+        /* 1. 3D Parallax Kapsayıcısı */
+        .parallax-container {
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.1s ease-out; /* Fare hareketine pürüzsüz tepki */
+            max-width: 450px;
+            margin: 0 auto;
+        }
+
+        /* 2. Cam Efektli (Glassmorphism) Rozet */
+        .glass-badge {
+            position: absolute;
+            bottom: -15px;
+            left: -25px;
+            background: rgba(255, 255, 255, 0.45); /* Yarı şeffaf beyaz */
+            backdrop-filter: blur(12px); /* Arkasını buzlu cam gibi flu yapar */
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            padding: 12px 22px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            transform: translateZ(40px); /* 3D efektinde rozetin havada (önde) durmasını sağlar */
+        }
+
+        .glass-badge span {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #333;
+            letter-spacing: 0.5px;
+        }
+
+        /* 3. Aşağı Kaydır (Scroll) İkonu */
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            opacity: 0.7;
+            animation: bounce 2s infinite ease-in-out;
+            pointer-events: none; /* Tıklanmayı engeller, yazıyı bozmaz */
+        }
+
+        .scroll-down span {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #555;
+            font-weight: 600;
+        }
+
+        /* Şık Mouse İkonu Çizimi */
+        .mouse-icon {
+            width: 22px;
+            height: 36px;
+            border: 2px solid #555;
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .mouse-icon::before {
+            content: '';
+            position: absolute;
+            top: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 6px;
+            background: #555;
+            border-radius: 2px;
+            animation: scrollWheel 2s infinite; /* Tekerleğin aşağı kayma animasyonu */
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translate(-50%, 0); }
+            50% { transform: translate(-50%, 10px); }
+        }
+
+        @keyframes scrollWheel {
+            0% { transform: translate(-50%, 0); opacity: 1; }
+            100% { transform: translate(-50%, 15px); opacity: 0; }
+        }
+
+        /* Mobil Uyum Düzeltmesi */
+        @media (max-width: 900px) {
+            .glass-badge { bottom: -10px; left: 10px; padding: 10px 18px; }
+            .scroll-down { bottom: 15px; }
+        }
     </style>
 </head>
 <body>
 
     <!-- GİRİŞ SAYFASI -->
-    <header class="intro-section">
+    <section class="intro-section">
         <div class="intro-left">
             <h1>Ömer ve Bilge’nin Sonsuz Sayılı Günleri</h1>
             <p>Güzel sevgilim ile şimdiye kadar yaşadığımız güzel anılardan oluşan bir foto galeri</p>
@@ -475,9 +587,17 @@
             </div>
         </div>
         <div class="intro-right">
-            <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 12.01.38 (7).jpeg" alt=""></span></div>
+            <div class="parallax-container" id="parallax-box">
+                 <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 12.01.38 (7).jpeg" alt=""></span></div>
+                 <div class="glass-badge">
+                    <span>❤️ Balam ve Ben...</span>
+                </div>
         </div>
-    </header>
+        <div class="scroll-down">
+            <span>Kaydır</span>
+            <div class="mouse-icon"></div>
+        </div>
+    </section>
 
     <!-- 1. BÖLÜM: 1 Fotoğraf -->
     <section class="section">
@@ -753,7 +873,9 @@ O günü hatırlamıyorum ne yaptık ne ettik ama sanırım bu dörtlüden başk
     </section>
 
     <!-- METİN KRİPTOGRAMI BÖLÜMÜ -->
-            <div class="cryptogram-container" id="crypto-ui">
+            
+<section class="section">
+    <div class="cryptogram-container" id="crypto-ui">
                 <h3>Küçük Bir Cryptogram Oyunu</h3>
                 <p>Aşağ(ğ)ıdaki şifrelenmiş metni deşifre ederek kilidi açabilirsin</p>
                 
@@ -777,6 +899,7 @@ O günü hatırlamıyorum ne yaptık ne ettik ama sanırım bu dörtlüden başk
                     <p><strong>İpucu:</strong> İlk kelime olan <strong>"M P T P C P"</strong> aslında <strong>"KİLİDİ"</strong> demektir.</p>
                 </div>
             </div>
+</section>
     <!-- GİZLİ HEDİYE / ŞİFRELİ KUTU BÖLÜMÜ -->
     <section class="section">
         <div class="memory-content" style="justify-content: center;">
@@ -877,7 +1000,162 @@ O günü hatırlamıyorum ne yaptık ne ettik ama sanırım bu dörtlüden başk
 
         // Gözlemciyi kapanış sayfasına bağla
         finaleObserver.observe(document.getElementById('finale-section'));
-        
+
+        // 3D MOUSE PARALLAX EFEKTİ (Giriş Sayfası)
+        const introSec = document.querySelector('.intro-section');
+        const parallaxContainer = document.getElementById('parallax-box');
+
+        introSec.addEventListener('mousemove', (e) => {
+            // Farenin ekrandaki konumu (X ve Y ekseni)
+            // '30' sayısını küçültürsen daha çok yatar, büyütürsen daha az yatar.
+            const xAxis = (window.innerWidth / 2 - e.pageX) / 30; 
+            const yAxis = (window.innerHeight / 2 - e.pageY) / 30;
+            
+            // Fotoğrafa 3D dönüş uygula
+            parallaxContainer.style.transform = `perspective(1000px) rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+        });
+
+        // Fare ekrandan çıkınca fotoğrafı eski düz haline geri getir
+        introSec.addEventListener('mouseleave', () => {
+            parallaxContainer.style.transition = 'transform 0.5s ease';
+            parallaxContainer.style.transform = `perspective(1000px) rotateY(0deg) rotateX(0deg)`;
+        });
+
+        // Tekrar üzerine gelince gecikmeyi kaldır (anlık takip etmesi için)
+        introSec.addEventListener('mouseenter', () => {
+            parallaxContainer.style.transition = 'transform 0.1s ease-out';
+        });
+        // SİNEMATİK VE YAVAŞ KAYDIRMA SİSTEMİ (Uzun Sayfaları Okumaya İzin Veren Akıllı Sürüm)
+        const allSections = document.querySelectorAll('.intro-section, .section, .finale');
+        let isScrolling = false;
+
+        // 1. GÜNCELLENMİŞ RADAR (Uzun sayfalarda ekranın ortasını baz alır)
+        function getCurrentSection() {
+            let index = 0;
+            let scrollMiddle = window.scrollY + (window.innerHeight / 2); 
+            
+            allSections.forEach((sec, i) => {
+                let top = sec.offsetTop;
+                let bottom = top + sec.offsetHeight;
+                if (scrollMiddle >= top && scrollMiddle <= bottom) {
+                    index = i;
+                }
+            });
+            return index;
+        }
+
+        // 2. SİNEMATİK GEÇİŞ ANİMASYONU
+        function scrollToSection(index) {
+            isScrolling = true;
+            const targetPosition = allSections[index].offsetTop;
+            const startPosition = window.scrollY;
+            const distance = targetPosition - startPosition;
+            let startTime = null;
+            const duration = 700; // Geçiş hızı (1.2 saniye)
+
+            function animation(currentTime) {
+                if (startTime === null) startTime = currentTime;
+                const timeElapsed = currentTime - startTime;
+                
+                const progress = timeElapsed / duration;
+                const ease = progress < 0.5 
+                    ? 4 * progress * progress * progress 
+                    : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+                
+                window.scrollTo(0, startPosition + distance * ease);
+
+                if (timeElapsed < duration) {
+                    requestAnimationFrame(animation);
+                } else {
+                    isScrolling = false;
+                }
+            }
+            requestAnimationFrame(animation);
+        }
+
+        // 3. BİLGİSAYAR FARESİ İÇİN (Akıllı Engelleyici)
+        window.addEventListener('wheel', (e) => {
+            if (isScrolling) {
+                e.preventDefault();
+                return;
+            }
+
+            let currentIdx = getCurrentSection();
+            let currentSec = allSections[currentIdx];
+            
+            // Kullanıcı şu an bulunduğu bölümün sınırlarında mı? (-/+ 5 piksel hata payı)
+            let isAtTop = window.scrollY <= currentSec.offsetTop + 5;
+            let isAtBottom = Math.ceil(window.scrollY + window.innerHeight) >= (currentSec.offsetTop + currentSec.offsetHeight - 5);
+
+            if (e.deltaY > 0) { // Aşağı kaydırıyor
+                if (isAtBottom) { 
+                    // Sayfanın EN ALTINDAYSA sinematik olarak bir sonrakine geç
+                    if (currentIdx < allSections.length - 1) {
+                        e.preventDefault();
+                        scrollToSection(currentIdx + 1);
+                    }
+                } 
+                // En altında DEĞİLSE sisteme karışmıyoruz, rahatça aşağı kayıp okumaya devam ediyor
+            } else { // Yukarı kaydırıyor
+                if (isAtTop) {
+                    // Sayfanın EN ÜSTÜNDEYSE sinematik olarak bir öncekine geç
+                    if (currentIdx > 0) {
+                        e.preventDefault();
+                        scrollToSection(currentIdx - 1);
+                    }
+                }
+            }
+        }, { passive: false });
+
+        // 4. TELEFON VE DOKUNMATİK EKRAN İÇİN (Akıllı Engelleyici)
+        let touchStartY = 0;
+        window.addEventListener('touchstart', (e) => {
+            touchStartY = e.touches[0].clientY;
+        }, { passive: false });
+
+        window.addEventListener('touchmove', (e) => {
+            if (isScrolling) {
+                e.preventDefault();
+                return;
+            }
+
+            let currentIdx = getCurrentSection();
+            let currentSec = allSections[currentIdx];
+            
+            let isAtTop = window.scrollY <= currentSec.offsetTop + 5;
+            let isAtBottom = Math.ceil(window.scrollY + window.innerHeight) >= (currentSec.offsetTop + currentSec.offsetHeight - 5);
+
+            let touchCurrentY = e.touches[0].clientY;
+            let distance = touchStartY - touchCurrentY;
+
+            // Telefonda sadece bölümün sonundaysa veya başındaysa normal kaydırmayı kilitliyoruz (Animasyon için)
+            if (distance > 0 && isAtBottom) { 
+                e.preventDefault(); 
+            } else if (distance < 0 && isAtTop) { 
+                e.preventDefault();
+            }
+        }, { passive: false });
+
+        window.addEventListener('touchend', (e) => {
+            if (isScrolling) return;
+            
+            let currentIdx = getCurrentSection();
+            let currentSec = allSections[currentIdx];
+            
+            let isAtTop = window.scrollY <= currentSec.offsetTop + 5;
+            let isAtBottom = Math.ceil(window.scrollY + window.innerHeight) >= (currentSec.offsetTop + currentSec.offsetHeight - 5);
+
+            let touchEndY = e.changedTouches[0].clientY;
+            let distance = touchStartY - touchEndY;
+
+            if (Math.abs(distance) > 40) { 
+                if (distance > 0 && isAtBottom) {
+                    if (currentIdx < allSections.length - 1) scrollToSection(currentIdx + 1);
+                } else if (distance < 0 && isAtTop) {
+                    if (currentIdx > 0) scrollToSection(currentIdx - 1);
+                }
+            }
+        });
     </script>
 
 </body>
