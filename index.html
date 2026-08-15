@@ -142,6 +142,103 @@
         .g-7 .frame:nth-child(6), .g-7 .frame:nth-child(7) { grid-column: span 6; }
         .g-7 .frame:not(:has(img)) { min-height: 180px; }
 
+        /* BİZİM DURAKLARIMIZ BÖLÜMÜ TASARIMI */
+        .locations-container {
+            flex-direction: column;
+            gap: 40px;
+        }
+        
+        .locations-header {
+            text-align: center;
+        }
+        
+        .locations-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #2a2a2a;
+            margin-bottom: 10px;
+        }
+        
+        .locations-header p {
+            color: #777;
+            font-size: 1.1rem;
+            font-style: italic;
+        }
+
+        /* YUKARIDAN AŞAĞI İNEN KESİK ÇİZGİ (YOL) */
+        .timeline {
+            position: relative;
+            max-width: 600px;
+            width: 100%;
+            margin: 0 auto;
+            padding-left: 30px;
+            border-left: 2px dashed #ffb6b9; /* Romantik pembe kesik çizgi */
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+        }
+        
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        /* YUVARLAK İKONLAR */
+        .timeline-icon {
+            position: absolute;
+            left: -48px; /* Çizginin tam üstüne oturtmak için */
+            top: 0;
+            width: 35px;
+            height: 35px;
+            background: #fff;
+            border: 2px solid #ffb6b9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        /* YAZI KUTULARI VE ANİMASYON */
+        .timeline-content {
+            background: rgba(255, 255, 255, 0.6);
+            padding: 20px 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        /* Üzerine gelince kutu sağa kayar */
+        .timeline-content:hover {
+            transform: translateX(10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+        }
+
+        .timeline-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        /* TARİH VE YER VURGUSU */
+        .location-date {
+            display: block;
+            font-size: 0.85rem;
+            color: #ff2a4b;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .timeline-content p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.6;
+        }
         .finale { 
             min-height: 80vh; 
             display: flex; 
@@ -410,7 +507,88 @@ O günü hatırlamıyorum ne yaptık ne ettik ama sanırım bu dörtlüden başk
             <div class="memory-text"><h2>Beraber kaldığımız ilk gece ve Yılbaşı</h2><p>Yılbaşı hakkında çok da bir şey dememe gerek yok benim için bir çok ilkin yaşandığı bir geceydi ve beraber de tabii ki bir çok ilki yaşadık yani bu anıları düşünüyorum sanki yıllar önce yaşanmış şeyler gibime geliyor ama 8 ay önce olmuş çok garip hissettiriyor bu sanki yıllardır beraberiz gibi hissettiriyor. Bu gecenin tek kötü yanı alkoldu o çok gereksiz kaçtı ama yine de günün geri kalan mükemmel anlarını hiç etkilemedi...</p></div>
         </div>
     </section>
+    <section class="section">
+        <div class="memory-content locations-container">
+            <div class="locations-header">
+                <h2>Dünyanın EN önemli 8 anı</h2>
+                <p>Bizim için özel olan o anlar...</p>
+            </div>
+            
+            <div class="timeline">
+                <!-- 1. Durak -->
+                <div class="timeline-item">
+                    <div class="timeline-icon">📍</div>
+                    <div class="timeline-content">
+                        <h3>İlk Tanışma</h3>
+                        <span class="location-date">1 Ekim - Taksim</span>
+                        <p>Dünyanın en alakasız ekibi ile de olsa yine de ilk tanışma günümüz.</p>
+                    </div>
+                </div>
 
+                <!-- 2. Durak -->
+                <div class="timeline-item">
+                    <div class="timeline-icon">☕</div>
+                    <div class="timeline-content">
+                        <h3>İlk Beraber Gezmeceler</h3>
+                        <span class="location-date">16 Ekim - Beşiktaş</span>
+                        <p>Okula gitmeyip boş boş dolaştığımız ilk gün</p>
+                    </div>
+                </div>
+
+                <!-- 3. Durak -->
+                <div class="timeline-item">
+                    <div class="timeline-icon">❤️</div>
+                    <div class="timeline-content">
+                        <h3>İlk Party - Flört olma tarihi</h3>
+                        <span class="location-date">28 Ekim - Beyoğlu</span>
+                        <p>TARİHİN EN BÜYÜK ANI.</p>
+                    </div>
+                </div>
+
+                <!-- 4. Durak -->
+                <div class="timeline-item">
+                    <div class="timeline-icon">🎉</div>
+                    <div class="timeline-content">
+                        <h3>Sevgili Olarak Gidilen İlk Parti</h3>
+                        <span class="location-date">26 Aralık - Bakırköy</span>
+                        <p>Sevgili olarak gittiğimiz o ilk kusmalı parti.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">🏠</div>
+                    <div class="timeline-content">
+                        <h3>İlk Beraber kaldığımız gün</h3>
+                        <span class="location-date">1 Ocak - Avcılar</span>
+                        <p>Tarihi bir dönüm noktası.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">💕</div>
+                    <div class="timeline-content">
+                        <h3>İlk Sevgililer Günümüz</h3>
+                        <span class="location-date">14 Şubat - Taksim, Kadıköy</span>
+                        <p>Mükemmel pizzalı ve bol hediyeli....</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">🎂</div>
+                    <div class="timeline-content">
+                        <h3>Doğum Günüm</h3>
+                        <span class="location-date">19 Nisan - Kadıköy</span>
+                        <p>Birinin bana hazırladığı en iyi doğum günü.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">🎂</div>
+                    <div class="timeline-content">
+                        <h3>Senin Doğum Günüm</h3>
+                        <span class="location-date">18 Ağustos - Erzurum</span>
+                        <p>Maalesef bunda yokum :(</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- KAPANIŞ SAYFASI -->
     <section class="finale">
         <p>Daha böyle bir sürü anılarımız oldu tüm bunları düşününce bana tanıştığımız günden itibaren çok güzel anlar yaşattın bilge seni bu yüzden çok seviyorum beraber çok mutlu günlerimiz de oldu beraber ağladığımız günler de oldu fakat dönüp bu anılara baktıkça gerçekten mutlu olduğumu hissediyorum bu kadar güzel anılar biriktirmiş olmamız beni çok mutlu ediyor bu kadar iyi anlaşabilmemiz birbirimizi mutlu edebilmemiz benim için her şeyden daha önemli düşününce aklıma gelmese bile fotoğraflara baktığım zaman o kadar şey yaşanmış o kadar güzel günler geçirmişiz ki bunları görmek beni çok mutlu ediyor keşke doğum gününde yanında olabilseydim ya da elimden gelebilseydi sana bana verdiğin hediyeler kadar güzel hediyeler verebilseydim ama elimden bu kadar geliyor şimdilik geri dönünce bunların hepsinin telafisini yapıcam sana bunları fiziksel olarak vermek istiyordum aslında ama yanına gelene kadar en azından doğum gününde sana bir şey vermek istiyorum seni her şeyden ve herkesten daha çok seviyorum doğum günün kutlu olsun.</p>
