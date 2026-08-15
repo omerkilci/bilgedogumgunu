@@ -569,10 +569,66 @@
             .glass-badge { bottom: -10px; left: 10px; padding: 10px 18px; }
             .scroll-down { bottom: 15px; }
         }
+        /* --- 1. SİNEMATİK AÇILIŞ PERDESİ --- */
+        #preloader {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #fdfbf7; /* Sitenin krem/fildişi tonu */
+            z-index: 99999; /* Her şeyin üstünde durması için */
+            display: flex;
+            align-items: center; justify-content: center;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+        
+        .preloader-content { text-align: center; }
+        
+        .heart-loader { 
+            font-size: 3.5rem; 
+            animation: heartbeat 1s infinite alternate; 
+            margin-bottom: 15px; 
+        }
+        
+        .loading-text { 
+            font-family: 'Playfair Display', serif; 
+            font-size: 1.3rem; 
+            color: #444; 
+            letter-spacing: 2px; 
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.15); }
+        }
+
+        /* --- 2. SAYFA İLERLEME ÇUBUĞU --- */
+        #progress-bar {
+            position: fixed;
+            top: 0; left: 0;
+            height: 4px;
+            background: linear-gradient(to right, #ffb6b9, #ff2a4b); /* Pembe'den kırmızıya şık geçiş */
+            width: 0%;
+            z-index: 99990;
+            transition: width 0.1s ease-out;
+            border-radius: 0 2px 2px 0;
+        }
+
+        /* --- 3. SÜZÜLEREK EKRANA GELME (REVEAL) EFEKTİ --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px); /* Başlangıçta 40 piksel aşağıda durur */
+            transition: all 0.9s cubic-bezier(0.5, 0, 0, 1); /* Çok yumuşak bir kayma grafiği */
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0); /* Kendi yerine yerleşir */
+        }
     </style>
 </head>
 <body>
 
+    <!-- SAYFA İLERLEME ÇUBUĞU (Üstteki ince çizgi) -->
+    <div id="progress-bar"></div>
     <!-- GİRİŞ SAYFASI -->
     <section class="intro-section">
         <div class="intro-left">
@@ -1155,6 +1211,53 @@ O günü hatırlamıyorum ne yaptık ne ettik ama sanırım bu dörtlüden başk
                     if (currentIdx > 0) scrollToSection(currentIdx - 1);
                 }
             }
+        });
+        // --- 1. AÇILIŞ PERDESİ (PRELOADER) KODU ---
+        window.addEventListener('load', () => {
+            let percent = 0;
+            const percentText = document.getElementById('progress-percent');
+            const preloader = document.getElementById('preloader');
+            
+            // Yüzdeyi hızla artırıyoruz
+            let interval = setInterval(() => {
+                percent += Math.floor(Math.random() * 15) + 5; // 5 ile 20 arası rastgele artış
+                if(percent >= 100) {
+                    percent = 100;
+                    clearInterval(interval);
+                    percentText.innerText = percent;
+                    
+                    // %100 olunca yarım saniye bekleyip perdeyi kaldırıyoruz
+                    setTimeout(() => {
+                        preloader.style.opacity = '0';
+                        preloader.style.visibility = 'hidden';
+                    }, 500); 
+                } else {
+                    percentText.innerText = percent;
+                }
+            }, 120);
+        });
+
+        // --- 2. SAYFA İLERLEME ÇUBUĞU KODU ---
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            document.getElementById('progress-bar').style.width = scrollPercent + '%';
+        });
+
+        // --- 3. SÜZÜLEREK EKRANA GELME (REVEAL) GÖZLEMCİSİ ---
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.classList.add('active'); // Ekrana girince active sınıfını ekle
+                }
+            });
+        }, { threshold: 0.15 }); // Elementin %15'i ekranda göründüğü an animasyon başlar
+
+        // Sayfa yüklendiğinde reveal class'ı olan her şeyi gözlemlemeye başla
+        document.addEventListener('DOMContentLoaded', () => {
+            const revealElements = document.querySelectorAll('.reveal');
+            revealElements.forEach(el => revealObserver.observe(el));
         });
     </script>
 
