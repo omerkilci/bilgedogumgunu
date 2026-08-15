@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İyi ki Doğdun!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #FAFAFA;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* GİRİŞ SAYFASI ÖZEL TASARIMI */
+        .intro-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 8%;
+            border-bottom: 1px solid #eaeaea;
+            gap: 50px;
+        }
+        .intro-left { flex: 1; display: flex; flex-direction: column; gap: 20px; }
+        .intro-left h1 { font-size: 3.5rem; color: #222; font-weight: 600; }
+        .intro-left p { font-size: 1.2rem; line-height: 1.8; color: #555; }
+        
+        .intro-mini-gallery { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+        .intro-mini-gallery .frame { width: 110px; height: 110px; }
+        
+        .intro-right { flex: 1; }
+        
+        /* GİRİŞ SAYFASI ANA FOTOĞRAF YERLEŞİMİ */
+        .intro-right .frame { width: 100%; max-width: 450px; margin: 0 auto; }
+
+        /* ANI SAYFALARI */
+        .section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 8%;
+            border-bottom: 1px solid #eaeaea;
+        }
+        .memory-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1200px;
+            gap: 60px;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s ease-out;
+        }
+        .section:nth-child(even) .memory-content { flex-direction: row-reverse; }
+        .memory-content.visible { opacity: 1; transform: translateY(0); }
+
+        /* YAZI KISMI */
+        .memory-text { flex: 1; }
+        .memory-text h2 { font-weight: 600; margin-bottom: 15px; font-size: 2rem; color: #222; }
+        .memory-text p { font-size: 1.1rem; line-height: 1.8; font-weight: 300; }
+
+        /* FOTOĞRAF IZGARA (GRID) SİSTEMİ */
+        .memory-img { flex: 1.2; width: 100%; }
+        
+        .photo-grid { 
+            display: grid; 
+            gap: 15px; 
+            width: 100%; 
+            align-items: center; /* Fotoğrafların sünmesini engeller */
+        }
+        
+        /* ÇERÇEVE ANA AYARLARI */
+        .frame {
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+        .frame:hover { transform: scale(1.02); }
+        
+        /* SİHİRLİ KISIM: EĞER ÇERÇEVEDE FOTOĞRAF YOKSA (BOŞSA) ÇALIŞACAK KOD */
+        .frame:not(:has(img)) {
+            background-color: #f4f4f4; 
+            border: 2px dashed #bbb; 
+            border-radius: 12px;
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center;
+            color: #888; 
+            text-align: center;
+        }
+        .frame:not(:has(img)) span { font-size: 0.9rem; font-weight: 600; padding: 20px; }
+
+        /* SİHİRLİ KISIM 2: EĞER ÇERÇEVEYE FOTOĞRAF EKLENDİYSE ÇALIŞACAK KOD */
+        .frame img {
+            width: 100%;
+            height: auto; /* Orijinal boyutu korur, kırpmaz */
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            display: block;
+        }
+
+        /* BOŞ ÇERÇEVELERİN GEÇİCİ BOYUTLARI (Fotoğraf gelince iptal olurlar) */
+        .g-1 { grid-template-columns: 1fr; }
+        .g-1 .frame { max-width: 450px; margin: 0 auto; }
+        .g-1 .frame:not(:has(img)) { min-height: 500px; aspect-ratio: 4/5; }
+        
+        .g-2 { grid-template-columns: repeat(2, 1fr); }
+        .g-2 .frame:not(:has(img)) { min-height: 350px; }
+        
+        .g-3 { grid-template-columns: repeat(2, 1fr); }
+        .g-3 .frame:nth-child(1) { grid-column: span 2; }
+        .g-3 .frame:nth-child(1):not(:has(img)) { min-height: 300px; }
+        .g-3 .frame:not(:has(img)) { min-height: 200px; }
+        
+        .g-4 { grid-template-columns: repeat(2, 1fr); }
+        .g-4 .frame:not(:has(img)) { min-height: 250px; }
+        
+        .g-5 { grid-template-columns: repeat(6, 1fr); }
+        .g-5 .frame:nth-child(1), .g-5 .frame:nth-child(2) { grid-column: span 3; }
+        .g-5 .frame:nth-child(3), .g-5 .frame:nth-child(4), .g-5 .frame:nth-child(5) { grid-column: span 2; }
+        .g-5 .frame:not(:has(img)) { min-height: 200px; }
+        
+        .g-7 { grid-template-columns: repeat(12, 1fr); }
+        .g-7 .frame:nth-child(1), .g-7 .frame:nth-child(2) { grid-column: span 6; }
+        .g-7 .frame:nth-child(3), .g-7 .frame:nth-child(4), .g-7 .frame:nth-child(5) { grid-column: span 4; }
+        .g-7 .frame:nth-child(6), .g-7 .frame:nth-child(7) { grid-column: span 6; }
+        .g-7 .frame:not(:has(img)) { min-height: 180px; }
+
+        /* KAPANIŞ SAYFASI */
+        .finale { min-height: 80vh; display: flex; align-items: center; justify-content: center; text-align: justify; }
+        .finale p { font-size: 1.6rem; line-height: 2; max-width: 1200px; color: #444; padding-bottom: 70px; padding-top: 30px;}
+
+        @media (max-width: 900px) {
+            .intro-section { flex-direction: column; text-align: center; }
+            .memory-content, .section:nth-child(even) .memory-content { flex-direction: column; }
+            .photo-grid { display: flex; flex-direction: column; }
+            .frame:not(:has(img)) { min-height: 300px !important; width: 100% !important; }
+            .g-1 .frame { max-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- GİRİŞ SAYFASI -->
+    <header class="intro-section">
+        <div class="intro-left">
+            <h1>Ömer ve Bilge’nin Sonsuz Sayılı Günleri</h1>
+            <p>Güzel sevgilim ile şimdiye kadar yaşadığımız güzel anılardan oluşan bir foto galeri</p>
+            <div class="intro-mini-gallery">
+                <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 11.59.10 (5).jpeg" alt=""></span></div>
+                <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 12.01.34 (6).jpeg" alt=""></span></div>
+                <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 12.01.34 (1).jpeg" alt=""></span></div>
+                <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 12.01.34 (9).jpeg" alt=""></span></div>
+                <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 12.01.38 (7).jpeg" alt=""></span></div>
+            </div>
+        </div>
+        <div class="intro-right">
+            <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 11.59.10 (1).jpeg" alt=""></span></div>
+        </div>
+    </header>
+
+    <!-- 1. BÖLÜM: 1 Fotoğraf -->
+    <section class="section">
+        <div class="memory-content">
+            <div class="memory-img photo-grid g-1">
+                <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 12.16.31.jpeg" alt=""></span></div>
+            </div>
+            <div class="memory-text"><h2>Tam bir klasik tanıştığımız ilk gün taksim gezisi</h2><p>Dünyanın en saçma gezisiydi ama tabii tanıştığımız ilk gün olduğu için yeri çok ayrı. Seni ilk defa o gün görmüştüm çok farklı bi tarzın var gibime gelmişti hatırlıyorum o yüzden sanırım biraz yakın hissettim. Bomboş taksim gezisi, aşırı kalabalık bi ekip ve bacak ağrısı ama yine de çok güzel bi gündü.
+
+-Bana o powerbanki veren babama burdan teşekkür ediyorum çok iyi şeylere vesile oldu.</p></div>
+        </div>
+    </section>
+
+    <!-- 2. BÖLÜM: 2 Fotoğraf -->
+    <section class="section">
+        <div class="memory-content">
+            <div class="memory-img photo-grid g-2">
+                <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 11.59.09 (1).jpeg" alt=""></span></div><div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 11.59.09.jpeg" alt=""></span></div>
+            </div>
+            <div class="memory-text"><h2>Ne yaptığımızı gram hatırlamadığım o gün</h2><p>O gün sena beyza sen ve ben ne yaptık gram hatırlamıyorum ama bu fotoğrafı çektiğim için çok mutluyum benim için yeri ayrıdır... 
+
+O günü hatırlamıyorum ne yaptık ne ettik ama sanırım bu dörtlüden başkaları da vardı karşımızda oturan ada falan olması lazım bilmiyorum.</p></div>
+        </div>
+    </section>
+
+    <!-- 3. BÖLÜM: 2 Fotoğraf -->
+    <section class="section">
+        <div class="memory-content">
+            <div class="memory-img photo-grid g-2">
+                <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 11.59.09 (3).jpeg" alt=""></span></div><div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 11.59.09 (4).jpeg" alt=""></span></div>
+            </div>
+            <div class="memory-text"><h2>Ve tabii ki o kutlu gün halloween....</h2><p>halloween partisi cidden çok entersan bi gün oldu hiç beklemiyordum böyle ani olacağını ama iyi ki de olmuş hiçbir pişmanlığım yok bu konuda. Her şey çok hızlı ilerledi ani alkol ve o kalabalık danslar her şey böyle birden gerçekleşti gibime geliyor şimdi düşününce. İyi ki beraber gitmişiz o partiye iyi ki bütün bunlar yaşandı ve o günden beri beraberiz ama keşke o kadar terlemeseydim hiç güzel bi first impression değil.</p></div>
+        </div>
+    </section>
+
+    <!-- 4. BÖLÜM: 1 Fotoğraf -->
+    <section class="section">
+        <div class="memory-content">
+            <div class="memory-img photo-grid g-1">
+                <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 11.59.09 (5).jpeg" alt=""></span></div>
+            </div>
+            <div class="memory-text"><h2>Partiden sonra sizinkilerle tanıştığım gün ve yürüyüş</h2><p>Her Erzurumlu erkek gibi tabii benim de yakın erkek arkadaşlarını tanımam etmem lazım. Allahtan bir sorun çıkmadı tabii biraz da gerginlik de vardı ilk defa arkadaşlarınla tanışacak olmam ve olayların daha nerdeyse yeni yaşanmış olmasından kaynaklı olarak</p></div>
+        </div>
+    </section>
+
+    <!-- 5. BÖLÜM: 3 Fotoğraf -->
+    <section class="section">
+        <div class="memory-content">
+            <div class="memory-img photo-grid g-3">
+                <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 11.59.10 (3).jpeg" alt=""></span></div>
+                <div class="frame"><span><img src="dikeyfotolar/WhatsApp Image 2026-08-15 at 11.59.10 (2) (1).jpeg" alt=""></span></div><div class="frame"><span><img src="dikeyfotolar/WhatsApp Image 2026-08-15 at 11.59.10 (4).jpeg" alt=""></span></div>
+            </div>
+            <div class="memory-text"><h2>Yine bi enteresan parti daha ama maskeli olanından</h2><p>Bu günden çok güzel fotoğraflarımız oldu onu fark ettim çok havalı hepsi ve maskelerimiz AŞIRI havalı çok eğlenceli bi gündü kombinlerimiz mükemmeldi ve yine çok havalı görünüyodun. Ufak bi kusma olayları yaşandı ama ondan da iyi dersler çıkarmış olduk sadece.</p></div>
+        </div>
+    </section>
+
+    <!-- 6. BÖLÜM: 3 Fotoğraf -->
+    <section class="section">
+        <div class="memory-content">
+            <div class="memory-img photo-grid g-3">
+                <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 11.59.10 (7).jpeg" alt=""></span></div>
+                <div class="frame"><span><img src="dikeyfotolar/WhatsApp Image 2026-08-15 at 11.59.10 (8).jpeg" alt=""></span></div><div class="frame"><span><img src="dikeyfotolar/WhatsApp Image 2026-08-15 at 11.59.11.jpeg" alt=""></span></div>
+            </div>
+            <div class="memory-text"><h2>Çiçekli bilge</h2><p>Bu daha çiçeği fark etmediğin fotoğrafa çok gülüyorum baktıkça bilmiyorum artık o an aklından ne geçiyordu ama çok üzgün duruyosun ama ondan sonra çiçeği sevmene çok sevinmiştim.</p></div>
+        </div>
+    </section>
+
+    <!-- 7. BÖLÜM: 4 Fotoğraf -->
+    <section class="section">
+        <div class="memory-content">
+            <div class="memory-img photo-grid g-4">
+                <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 11.59.11 (3).jpeg" alt=""></span></div><div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 11.59.11 (7).jpeg" alt=""></span></div>
+                <div class="frame"><span><img src="dikeyfotolar/WhatsApp Image 2026-08-15 at 11.59.11 (6).jpeg" alt=""></span></div><div class="frame"><span><img src="dikeyfotolar/WhatsApp Image 2026-08-15 at 11.59.11 (1).jpeg" alt=""></span></div>
+            </div>
+            <div class="memory-text"><h2>Sevgililer Günü</h2><p>Sevgililer günümüz gerçekten çok güzel geçmişti bence aldığın hediyelerin hepsini gerçekten çok beğenmiştim hepsi çok düşünülerek alınmış şeylerdi yediğimiz pizzaların tadı muhteşemdi koşko yono yosok yao</p></div>
+        </div>
+    </section>
+
+    <!-- 8. BÖLÜM: 3 Fotoğraf -->
+    <section class="section">
+        <div class="memory-content">
+            <div class="memory-img photo-grid g-3">
+                <div class="frame"><span><img src="yatayfotolar/images.jpg" alt=""></span></div>
+                <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 12.01.38 (4).jpeg" alt=""></span></div><div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 12.01.38 (3).jpeg" alt=""></span></div>
+            </div>
+            <div class="memory-text"><h2>Çok bir şey dememe gerek yok sanırım</h2><p>Doyuyo! markasının Friends Combo menüsü (2 acılı tenders, 2 cajun tenders, 2 original tenders, 2 tavuk sandviç, patates kızartması, coleslaw, turşu, soslar ve 2 içecek) toplamda yaklaşık 2200 - 2500 kalori (kcal) civarındadır.</p></div>
+        </div>
+    </section>
+
+    <!-- 9. BÖLÜM: 1 Fotoğraf -->
+    <section class="section">
+        <div class="memory-content">
+            <div class="memory-img photo-grid g-1">
+                <div class="frame"><span><img src="dikeyfotolar/WhatsApp Image 2026-08-15 at 12.04.44.jpeg" alt=""></span></div>
+            </div>
+            <div class="memory-text"><h2>Bana aldığın harika destansı mükemmel hediye</h2><p>Bu hediyeyi çok sevmemim nedeni hem gerçekten bayıldığım bi saat modeli olması ama ondan daha önemlisi senin bu saati sevdiğimi sana öylesine söylediğim zaman bunu aklında tutup o kadar zaman bekleyip bana alman beni gerçekten çok mutlu etmişti ve aldığım zaman da aşırı şaşırmıştım sen bunu nerden aklında tuttun da buldun da aldın gerçekten çok teşekkür ederim....</p></div>
+        </div>
+    </section>
+
+    <!-- 10. BÖLÜM: 3 Fotoğraf -->
+    <section class="section">
+        <div class="memory-content">
+            <div class="memory-img photo-grid g-3">
+                <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 12.01.33 (3).jpeg" alt=""></span></div>
+                <div class="frame"><span><img src="dikeyfotolar/WhatsApp Image 2026-08-15 at 12.01.33 (2).jpeg" alt=""></span></div><div class="frame"><span><img src="dikeyfotolar/WhatsApp Image 2026-08-15 at 12.01.33 (1).jpeg" alt=""></span></div>
+            </div>
+            <div class="memory-text"><h2>Dünyanın en muhteşem günlerinden biri</h2><p>Hayatımda yediğim en güzel sandwichin yapıldığı o gün her yanıyla çok güzeldi böyle bi fırsatımızın olması çok güzel oldu o yediğimiz yemekler ve kahvaltı hala aklımda her yanıyla mükemmel geçen 2 gün</p></div>
+        </div>
+    </section>
+
+    <!-- 11. BÖLÜM: 7 Fotoğraf -->
+    <section class="section">
+        <div class="memory-content">
+            <div class="memory-img photo-grid g-7">
+                <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 12.01.37 (4).jpeg" alt=""></span></div><div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 12.01.37 (9).jpeg" alt=""></span></div>
+                <div class="frame"><span><img src="dikeyfotolar/WhatsApp Image 2026-08-15 at 12.01.37 (3).jpeg" alt=""></span></div><div class="frame"><span><img src="dikeyfotolar/WhatsApp Image 2026-08-15 at 12.01.37 (5).jpeg" alt=""></span></div><div class="frame"><span><img src="dikeyfotolar/WhatsApp Image 2026-08-15 at 12.01.37 (2).jpeg" alt=""></span></div>
+                <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 15.04.29 (1).jpeg" alt=""></span></div><div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 15.04.29 (2).jpeg" alt=""></span></div>
+            </div>
+            <div class="memory-text"><h2>Dünyanın en iyi doğum günü!!!</h2><p></p></div>
+        </div>
+    </section>
+
+    <!-- 12. BÖLÜM: 1 Fotoğraf -->
+    <section class="section">
+        <div class="memory-content">
+            <div class="memory-img photo-grid g-1">
+                <div class="frame"><span><img src="dikeyfotolar/WhatsApp Image 2026-08-15 at 12.01.37 (6).jpeg" alt=""></span></div>
+            </div>
+            <div class="memory-text"><h2></h2><p>Bu seneki doğum günüm gerçekten bu yaşıma kadar benim için yapılan en iyi doğum günüydü hiç böyle hediyeler almamıştım ya da benim için bu kadar şeyler yapılmamıştı ama sen taa ne zaman öncesinden bunları planlayıp her şeyi düşünüp bana böyle bi doğum günü yaşatman gerçekten harikaydı her detayı çok güzel düşünülmüştü aşırı keyif aldım bütün hediyeleri çok beğendim hepsi belli ayrı ayrı çok fena bi emek harcanmış bu yüzden sana doğum gününde çok daha güzel şeyler yapmak istiyordum ama zamanı çok kötü denk geldi o yüzden yanında olamicam doğum gününde bu beni çok üzüyor ama yine de bütün bunlar için çok teşekkür ederim</p></div>
+        </div>
+    </section>
+
+    <!-- 13. BÖLÜM: 5 Fotoğraf -->
+    <section class="section">
+        <div class="memory-content">
+            <div class="memory-img photo-grid g-5">
+                <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 12.01.34 (5).jpeg" alt=""></span></div><div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 12.01.34 (7).jpeg" alt=""></span></div>
+                <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 12.01.34 (6).jpeg" alt=""></span></div><div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 12.01.34 (8).jpeg" alt=""></span></div><div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 12.01.34 (9).jpeg" alt=""></span></div>
+            </div>
+            <div class="memory-text"><h2>Adalar Gezimiz</h2><p>Adalar gezimiz ve o muhteşem dondurmalarımız bu geziden fotolarımızı çok beğeniyorum hele ki bu yazının üstünde olan fotoda çok tatlı çıkmışsın tekrarlanması gereken bir date... </p></div>
+        </div>
+    </section>
+
+    <!-- 14. BÖLÜM: 1 Fotoğraf -->
+    <section class="section">
+        <div class="memory-content">
+            <div class="memory-img photo-grid g-1">
+                <div class="frame"><span><img src="dikeyfotolar/WhatsApp Image 2026-08-15 at 12.01.35 (2).jpeg" alt=""></span></div>
+            </div>
+            <div class="memory-text"><h2>Mükemmel bir ikea date</h2><p>Erzurum’a gelmeden bunu yapmak istiyordum gezerken böyle odaları evleri gördükçe seninle bi eski püskü dandik bi evi yeniden restore etmek istedim o odalar gibi küçük de olsa bize ait olan bi evde kalıyor olmamız düşüncesi çok güzel geliyordu umarım en kısa sürede yaparız bunları bu yüzden çok seviyorum ikea datemizi ama keşke yemekleri de güzel olsa amına koyim.</p></div>
+        </div>
+    </section>
+
+    <!-- 15. BÖLÜM: 2 Fotoğraf -->
+    <section class="section">
+        <div class="memory-content">
+            <div class="memory-img photo-grid g-2">
+                <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 12.01.34 (3) (1).jpeg" alt=""></span></div><div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 12.01.34 (2).jpeg" alt=""></span></div>
+            </div>
+            <div class="memory-text"><h2>Cancanlar ile içmece günü</h2><p>Ben hayatımda ilk defa bu kadar fazla bira içebilmiştim normal bi tane içip devamını asla getiremem ama o gün nedense içtikçe içmeye devam ettik dana gibi aşşırı eğlenceli bi gündü İstanbul’a geldiğimde bunu yine yapmamız lazım.</p></div>
+        </div>
+    </section>
+
+    <!-- 16. BÖLÜM: 1 Fotoğraf -->
+    <section class="section">
+        <div class="memory-content">
+            <div class="memory-img photo-grid g-1">
+                <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 12.01.33.jpeg" alt=""></span></div>
+            </div>
+            <div class="memory-text"><h2>Dizlerin kırıldığı paten günleri</h2><p>Ne kadar paten sürmekte ustalaşmaya çok yaklaşmış olsam da başımıza gelen talihsiz olaylar nedeniyle yarıda bırakmak durumunda kaldık ama yine de gittiğimiz günler çok eğlenmiştim paten sürmeyi gram beceremesem de ikimizin de götümüzün üstüne düşmesi çok komikti.</p></div>
+        </div>
+    </section>
+
+    <!-- 17. BÖLÜM: 1 Fotoğraf -->
+    <section class="section">
+        <div class="memory-content">
+            <div class="memory-img photo-grid g-1">
+                <div class="frame"><span><img src="dikeyfotolar/WhatsApp Image 2026-08-15 at 12.01.39.jpeg" alt=""></span></div>
+            </div>
+            <div class="memory-text"><h2>Beraber kaldığımız ilk gece ve Yılbaşı</h2><p>Yılbaşı hakkında çok da bir şey dememe gerek yok benim için bir çok ilkin yaşandığı bir geceydi ve beraber de tabii ki bir çok ilki yaşadık yani bu anıları düşünüyorum sanki yıllar önce yaşanmış şeyler gibime geliyor ama 8 ay önce olmuş çok garip hissettiriyor bu sanki yıllardır beraberiz gibi hissettiriyor. Bu gecenin tek kötü yanı alkoldu o çok gereksiz kaçtı ama yine de günün geri kalan mükemmel anlarını hiç etkilemedi...</p></div>
+        </div>
+    </section>
+
+    <!-- KAPANIŞ SAYFASI -->
+    <section class="finale">
+        <p>Daha böyle bir sürü anılarımız oldu tüm bunları düşününce bana tanıştığımız günden itibaren çok güzel anlar yaşattın bilge seni bu yüzden çok seviyorum beraber çok mutlu günlerimiz de oldu beraber ağladığımız günler de oldu fakat dönüp bu anılara baktıkça gerçekten mutlu olduğumu hissediyorum bu kadar güzel anılar biriktirmiş olmamız beni çok mutlu ediyor bu kadar iyi anlaşabilmemiz birbirimizi mutlu edebilmemiz benim için her şeyden daha önemli düşününce aklıma gelmese bile fotoğraflara baktığım zaman o kadar şey yaşanmış o kadar güzel günler geçirmişiz ki bunları görmek beni çok mutlu ediyor keşke doğum gününde yanında olabilseydim ya da elimden gelebilseydi sana bana verdiğin hediyeler kadar güzel hediyeler verebilseydim ama elimden bu kadar geliyor şimdilik geri dönünce bunların hepsinin telafisini yapıcam sana bunları fiziksel olarak vermek istiyordum aslında ama yanına gelene kadar en azından doğum gününde sana bir şey vermek istiyorum seni her şeyden ve herkesten daha çok seviyorum doğum günün kutlu olsun.</p>
+    </section>
+
+    <script>
+        // Sayfa kaydırıldıkça animasyonların çalışması
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.memory-content').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
