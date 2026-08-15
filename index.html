@@ -137,11 +137,30 @@
         .finale p { font-size: 1.6rem; line-height: 2; max-width: 1200px; color: #444; padding-bottom: 70px; padding-top: 30px;}
 
         @media (max-width: 900px) {
-            .intro-section { flex-direction: column; text-align: center; }
-            .memory-content, .section:nth-child(even) .memory-content { flex-direction: column; }
-            .photo-grid { display: flex; flex-direction: column; }
-            .frame:not(:has(img)) { min-height: 300px !important; width: 100% !important; }
-            .g-1 .frame { max-width: 100%; }
+            /* Sağdan soldan boşlukları telefona göre daraltıp ekranı iyi kullanalım */
+            .section, .intro-section { padding: 40px 5%; }
+            
+            /* Giriş sayfası yazıları telefonda çok büyük durmasın diye küçültüyoruz */
+            .intro-section { flex-direction: column; text-align: center; gap: 30px; }
+            .intro-left h1 { font-size: 2.5rem; }
+            .intro-left p { font-size: 1rem; }
+            
+            /* Zikzak akışı iptal edip, önce yazı sonra fotoğraf gelecek şekilde alt alta diziyoruz */
+            .memory-content, .section:nth-child(even) .memory-content { 
+                flex-direction: column; 
+                text-align: center; 
+                gap: 30px; 
+            }
+            
+            /* Anı başlıklarını ve metinlerini telefona göre optimize etme */
+            .memory-text h2 { font-size: 1.6rem; }
+            .memory-text p { font-size: 1rem; }
+            
+            /* Çoklu fotoğraflar (gridler) mobilde karmaşık durmasın diye sırayla alt alta gelsin */
+            .photo-grid { display: flex; flex-direction: column; gap: 15px; }
+            
+            /* Kapanış yazısı telefona sığsın */
+            .finale p { font-size: 1.2rem; }
         }
     </style>
 </head>
