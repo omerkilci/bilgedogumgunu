@@ -100,19 +100,25 @@
         .frame:not(:has(img)) span { font-size: 0.9rem; font-weight: 600; padding: 20px; }
 
         /* SİHİRLİ KISIM 2: EĞER ÇERÇEVEYE FOTOĞRAF EKLENDİYSE ÇALIŞACAK KOD */
+        /* FOTOĞRAFLARIN GÖRÜNÜMÜ VE HAFİF GÖLGE */
         .frame img {
+            
             width: 100%;
             height: auto;
             border-radius: 12px;
             display: block;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            /* Büyüme efektinin yumuşak olması için: */
-            transition: transform 0.4s ease; 
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+            
+            /* Üzerine gelince çalışacak animasyonun yumuşaklığı için */
+            transition: box-shadow 0.4s ease, transform 0.4s ease;
         }
 
-        /* Fotoğrafın üzerine gelindiğinde çalışacak kod: */
+        /* FOTOĞRAFIN ÜZERİNE GELİNDİĞİNDE (HOVER) ÇALIŞACAK KOD */
         .frame img:hover {
-            transform: scale(1.03); /* Fotoğrafı %3 oranında büyütür */
+            /* Fotoğraf çok ama çok hafif yukarı kalkar */
+            transform: translateY(-4px); 
+            /* Gölge biraz daha belirginleşir ve yayılır */
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
         }
 
         /* BOŞ ÇERÇEVELERİN GEÇİCİ BOYUTLARI (Fotoğraf gelince iptal olurlar) */
@@ -239,6 +245,7 @@
             color: #555;
             line-height: 1.6;
         }
+        /* KAPANIŞ SAYFASI */
         .finale { 
             min-height: 80vh; 
             display: flex; 
@@ -266,43 +273,177 @@
             background-repeat: no-repeat;
             background-position: center;
             background-size: contain;
-            opacity: 0.15; /* %5 görünürlük - Suyu bulandırmayan muazzam bir şeffaflık */
+            opacity: 0.25; /* %5 görünürlük - Suyu bulandırmayan muazzam bir şeffaflık */
             z-index: 0; /* Yazıların arkasında kalmasını sağlar */
             pointer-events: none; /* Yanlışlıkla seçilmeyi engeller */
         }
 
-        /* YAZILARIN KALBİN ÜSTÜNDE DURMASI İÇİN */
-        .finale-content {
-            position: relative;
-            z-index: 1; 
+
+        .finale p { font-size: 1.6rem; line-height: 2; max-width: 1200px; color: #444; padding-bottom: 0px; padding-top: 50px; text-align: justify; }
+/* METİN KRİPTOGRAMI TASARIMI */
+        .cryptogram-container {
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px #222 solid ;
+            padding: 35px 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+            max-width: 700px; /* Cümle uzun olduğu için kutuyu biraz genişlettik */
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
         }
-        .finale p { font-size: 1.6rem; line-height: 2; max-width: 1200px; color: #444; padding-bottom: 0px; padding-top: 150px; text-align: justify; }
+
+        .cryptogram-container h3 {
+            font-family: 'Playfair Display', serif;
+            color: #2a2a2a;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .cryptogram-container p {
+            color: #666;
+            font-size: 1.05rem;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        /* Şifreli Kelimelerin Görünümü */
+        .cipher-text {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px 25px; /* Kelimeler arası geniş boşluk */
+            margin-bottom: 35px;
+        }
+
+        .cipher-text .word {
+            background: #fff;
+            padding: 12px 18px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            font-family: 'Montserrat', monospace; 
+            font-size: 1.4rem;
+            font-weight: 600;
+            letter-spacing: 6px; /* Altına harf yazabilmesi için harf arası boşluklar */
+            color: #2a2a2a;
+            border-bottom: 3px solid #f9f9f9; 
+        }
+
+        /* İpucu Kutusunun Görünümü */
+        .cipher-hint {
+            
+            border-left: 4px solid #ff2a4b;
+            padding: 18px 25px;
+            border-radius: 0 8px 8px 0;
+            display: inline-block;
+            font-size: 1.1rem;
+            color: #444;
+            line-height: 1.6;
+            text-align: left;
+        }
+        
+        .cipher-hint small {
+            font-size: 0.9rem;
+            color: #777;
+        }   
+        /* GİZLİ KUTU TASARIMI */
+        .secret-box, .secret-message {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .lock-icon, .unlock-icon {
+            font-size: 3.5rem;
+            margin-bottom: 40px;
+            animation: floatLock 3s ease-in-out infinite; /* İkonu hafifçe havada süzülür gibi yapar */
+        }
+
+        @keyframes floatLock {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .secret-box h2, .secret-message h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #2a2a2a;
+            margin-bottom: 15px;
+        }
+
+        .secret-box p, .secret-message p {
+            color: #666;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            text-align: justify;
+        }
+
+        /* ŞİFRE GİRİŞ ALANI */
+        .input-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        #secret-code {
+            padding: 12px;
+            font-size: 1.5rem;
+            border: 2px solid #eee;
+            border-radius: 10px;
+            width: 120px;
+            text-align: center;
+            letter-spacing: 5px;
+            font-family: 'Montserrat', sans-serif;
+            background: #fdfdfd;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        #secret-code:focus {
+            border-color: #ffb6b9;
+            box-shadow: 0 0 15px rgba(255, 182, 185, 0.4);
+        }
+
+        .input-group button {
+            padding: 0 25px;
+            background-color: #2a2a2a;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            transition: background 0.3s;
+        }
+
+        .input-group button:hover {
+            background-color: #ff2a4b;
+        }
+
+        #error-message {
+            color: #ff2a4b;
+            font-size: 0.9rem;
+            font-weight: 600;
+            opacity: 0; /* Başlangıçta görünmez */
+            transition: opacity 0.3s;
+            margin-bottom: 0;
+        }
 
         @media (max-width: 900px) {
-            /* Sağdan soldan boşlukları telefona göre daraltıp ekranı iyi kullanalım */
-            .section, .intro-section { padding: 40px 5%; }
-            
-            /* Giriş sayfası yazıları telefonda çok büyük durmasın diye küçültüyoruz */
-            .intro-section { flex-direction: column; text-align: center; gap: 30px; }
-            .intro-left h1 { font-size: 2.5rem; }
-            .intro-left p { font-size: 1rem; }
-            
-            /* Zikzak akışı iptal edip, önce yazı sonra fotoğraf gelecek şekilde alt alta diziyoruz */
-            .memory-content, .section:nth-child(even) .memory-content { 
-                flex-direction: column; 
-                text-align: center; 
-                gap: 30px; 
-            }
-            
-            /* Anı başlıklarını ve metinlerini telefona göre optimize etme */
-            .memory-text h2 { font-size: 1.6rem; }
-            .memory-text p { font-size: 1rem; }
-            
-            /* Çoklu fotoğraflar (gridler) mobilde karmaşık durmasın diye sırayla alt alta gelsin */
-            .photo-grid { display: flex; flex-direction: column; gap: 15px; }
-            
-            /* Kapanış yazısı telefona sığsın */
-            .finale p { font-size: 1.2rem; }
+            .intro-section { flex-direction: column; text-align: center; }
+            .memory-content, .section:nth-child(even) .memory-content { flex-direction: column; }
+            .photo-grid { display: flex; flex-direction: column; }
+            .frame:not(:has(img)) { min-height: 300px !important; width: 100% !important; }
+            .g-1 .frame { max-width: 100%; }
         }
     </style>
 </head>
@@ -318,11 +459,11 @@
                 <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 12.01.34 (6).jpeg" alt=""></span></div>
                 <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 12.01.34 (1).jpeg" alt=""></span></div>
                 <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 12.01.34 (9).jpeg" alt=""></span></div>
-                <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 12.01.38 (7).jpeg" alt=""></span></div>
+                <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 11.59.10 (1).jpeg" alt=""></span></div>
             </div>
         </div>
         <div class="intro-right">
-            <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 11.59.10 (1).jpeg" alt=""></span></div>
+            <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 12.01.38 (7).jpeg" alt=""></span></div>
         </div>
     </header>
 
@@ -507,6 +648,7 @@ O günü hatırlamıyorum ne yaptık ne ettik ama sanırım bu dörtlüden başk
             <div class="memory-text"><h2>Beraber kaldığımız ilk gece ve Yılbaşı</h2><p>Yılbaşı hakkında çok da bir şey dememe gerek yok benim için bir çok ilkin yaşandığı bir geceydi ve beraber de tabii ki bir çok ilki yaşadık yani bu anıları düşünüyorum sanki yıllar önce yaşanmış şeyler gibime geliyor ama 8 ay önce olmuş çok garip hissettiriyor bu sanki yıllardır beraberiz gibi hissettiriyor. Bu gecenin tek kötü yanı alkoldu o çok gereksiz kaçtı ama yine de günün geri kalan mükemmel anlarını hiç etkilemedi...</p></div>
         </div>
     </section>
+<!-- BİZİM DURAKLARIMIZ (KONUMLAR) BÖLÜMÜ -->
     <section class="section">
         <div class="memory-content locations-container">
             <div class="locations-header">
@@ -591,7 +733,65 @@ O günü hatırlamıyorum ne yaptık ne ettik ama sanırım bu dörtlüden başk
     </section>
     <!-- KAPANIŞ SAYFASI -->
     <section class="finale">
-        <p>Daha böyle bir sürü anılarımız oldu tüm bunları düşününce bana tanıştığımız günden itibaren çok güzel anlar yaşattın bilge seni bu yüzden çok seviyorum beraber çok mutlu günlerimiz de oldu beraber ağladığımız günler de oldu fakat dönüp bu anılara baktıkça gerçekten mutlu olduğumu hissediyorum bu kadar güzel anılar biriktirmiş olmamız beni çok mutlu ediyor bu kadar iyi anlaşabilmemiz birbirimizi mutlu edebilmemiz benim için her şeyden daha önemli düşününce aklıma gelmese bile fotoğraflara baktığım zaman o kadar şey yaşanmış o kadar güzel günler geçirmişiz ki bunları görmek beni çok mutlu ediyor keşke doğum gününde yanında olabilseydim ya da elimden gelebilseydi sana bana verdiğin hediyeler kadar güzel hediyeler verebilseydim ama elimden bu kadar geliyor şimdilik geri dönünce bunların hepsinin telafisini yapıcam sana bunları fiziksel olarak vermek istiyordum aslında ama yanına gelene kadar en azından doğum gününde sana bir şey vermek istiyorum seni her şeyden ve herkesten daha çok seviyorum doğum günün kutlu olsun.</p>
+        <p>Daha böyle bir sürü anılarımız oldu tüm bunları düşününce bana tanıştığımız günden itibaren çok güzel anlar yaşattın bilge seni bu yüzden çok seviyorum beraber çok mutlu günlerimiz de oldu beraber ağladığımız günler de oldu fakat dönüp bu anılara baktıkça gerçekten mutlu olduğumu hissediyorum bu kadar güzel anılar biriktirmiş olmamız beni çok mutlu ediyor bu kadar iyi anlaşabilmemiz birbirimizi mutlu edebilmemiz benim için her şeyden daha önemli düşününce aklıma gelmese bile fotoğraflara baktığım zaman o kadar şey yaşanmış o kadar güzel günler geçirmişiz ki bunları görmek beni çok mutlu ediyor keşke doğum gününde yanında olabilseydim ya da elimden gelebilseydi sana bana verdiğin hediyeler kadar güzel hediyeler verebilseydim ama elimden bu kadar geliyor şimdilik geri dönünce bunların hepsinin telafisini yapıcam sana bunları fiziksel olarak vermek istiyordum aslında ama yanına gelene kadar en azından doğum gününde sana bir şey vermek istiyorum seni her şeyden ve herkesten daha çok seviyorum doğum günün kutlu olsun. 
+        </p>
+        
+    </section>
+
+    <!-- METİN KRİPTOGRAMI BÖLÜMÜ -->
+            <div class="cryptogram-container" id="crypto-ui">
+                <h3>Küçük Bir Cryptogram Oyunu</h3>
+                <p>Aşağ(ğ)ıdaki şifrelenmiş metni deşifre ederek kilidi açabilirsin</p>
+                
+                <!-- Şifrelenmiş Metin -->
+                <div class="cipher-text">
+                    <span class="word">MPTPCP</span>
+                    <span class="word">YVHYM</span>
+                    <span class="word">PVPS</span>
+                    <span class="word">ZF</span>
+                    <span class="word">GPJBLDP</span>
+                    <span class="word">VXRHLS</span>
+                    <span class="word">NLBLMPDKB</span>
+                    <span class="word">WYBKTY</span>
+                    <span class="word">KS</span>
+                    <span class="word">ŞLMPR</span>
+                    <span class="word">LMPH</span>
+                </div>
+                
+                <!-- İpucu -->
+                <div class="cipher-hint">
+                    <p><strong>İpucu:</strong> İlk kelime olan <strong>"M P T P C P"</strong> aslında <strong>"KİLİDİ"</strong> demektir.</p>
+                </div>
+            </div>
+    <!-- GİZLİ HEDİYE / ŞİFRELİ KUTU BÖLÜMÜ -->
+    <section class="section">
+        <div class="memory-content" style="justify-content: center;">
+            
+            <!-- KİLİT EKRANI (Şifre İsteyen Kısım) -->
+            <div class="secret-box" id="secret-ui">
+                <div class="lock-icon">🔒</div>
+                <h2>Çok Gizli Mesaj</h2>
+                <p>Bu  bölmeyi açmak için yukarıdaki şifreyi çözmelisin.</p>
+                <div class="input-group">
+                    <input type="password" id="secret-code" maxlength="4" placeholder="****">
+                    <button onclick="checkCode()">Kilidi Aç</button>
+                </div>
+                <p id="error-message">Yanlış şifre dana</p>
+            </div>
+            
+            <!-- KİLİT AÇILINCA GÖRÜNECEK OLAN ASIL MESAJ/HEDİYE -->
+            <div class="secret-message" id="secret-message" style="display: none;">
+                <div class="unlock-icon">🔓</div>
+                <h3>Tebrikler Balam!</h3>
+                <p>
+                    Şifre ne kadar zordu bilmiyorum ama bu tarz şifreleri çok seviyorum o yüzden sana da böyle bir şey hazırlamak istedim umarım çözmeye çalışırken çok kanser olmamışsındır.
+                    Elimden geldiği kadar sana farklı şeyler hazırlamaya çalışıyorum seni olabildiğince memnun etmeye çalışıyorum aşkım. Bu sayfayı gördüğünde yanına gelmeme tam 2 hafta kalmış
+                    olacak ve ben seni çok özledim. Erzuruma geldiğim günden beri seni çok özlüyorum ve tek düşündüğüm şey yanına geri dönmek. Her gün seninle buluşmaya çok alıştım sensiz kalınca
+                    aniden her şey çok boş hissettirmeye başladı. Erzurumda her şey zaten çok sıkıcı bir de sensiz olunca çok daha boş hissettiriyor. Yanına gelmeyi çok büyük bir sabırsızlıkla bekliyorum seni çok seviyorum aşkım.
+                </p>
+            </div>
+
+        </div>
     </section>
 
     <script>
@@ -605,6 +805,35 @@ O günü hatırlamıyorum ne yaptık ne ettik ama sanırım bu dörtlüden başk
         }, { threshold: 0.2 });
 
         document.querySelectorAll('.memory-content').forEach(el => observer.observe(el));
+
+        // GİZLİ KUTU ŞİFRE KONTROLÜ
+        function checkCode() {
+            const input = document.getElementById('secret-code').value;
+            const errorMsg = document.getElementById('error-message');
+            
+            // BURADAKİ '1810' KISMINI İSTEDİĞİN 4 RAKAMLA DEĞİŞTİREBİLİRSİN
+            if(input === '1810') {
+                // Şifre doğruysa kilit ekranını gizle ve asıl mesajı göster
+                document.getElementById('secret-ui').style.display = 'none';
+                
+                const secretMessage = document.getElementById('secret-message');
+                secretMessage.style.display = 'block';
+                
+                // Küçük bir animasyon (Kutunun belirmesi)
+                secretMessage.animate([
+                    { opacity: 0, transform: 'scale(0.9)' },
+                    { opacity: 1, transform: 'scale(1)' }
+                ], { duration: 500, fill: 'forwards' });
+                
+            } else {
+                // Şifre yanlışsa uyarı ver ve 3 saniye sonra uyarıyı sil
+                errorMsg.style.opacity = '1';
+                setTimeout(() => { 
+                    errorMsg.style.opacity = '0'; 
+                }, 3000);
+            }
+        }
+        
     </script>
 
 </body>
