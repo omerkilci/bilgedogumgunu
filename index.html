@@ -293,6 +293,18 @@
             margin-right: auto;
             box-shadow: 0 10px 25px rgba(0,0,0,0.03);
         }
+        /* DAKTİLO EFEKTİ İMLECİ */
+        .typewriter-box::after {
+            content: '|';
+            animation: blink 1s infinite;
+            color: #ff2a4b;
+            font-weight: bold;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
 
         .cryptogram-container h3 {
             font-family: 'Playfair Display', serif;
@@ -732,8 +744,10 @@ O günü hatırlamıyorum ne yaptık ne ettik ama sanırım bu dörtlüden başk
         </div>
     </section>
     <!-- KAPANIŞ SAYFASI -->
-    <section class="finale">
-        <p>Daha böyle bir sürü anılarımız oldu tüm bunları düşününce bana tanıştığımız günden itibaren çok güzel anlar yaşattın bilge seni bu yüzden çok seviyorum beraber çok mutlu günlerimiz de oldu beraber ağladığımız günler de oldu fakat dönüp bu anılara baktıkça gerçekten mutlu olduğumu hissediyorum bu kadar güzel anılar biriktirmiş olmamız beni çok mutlu ediyor bu kadar iyi anlaşabilmemiz birbirimizi mutlu edebilmemiz benim için her şeyden daha önemli düşününce aklıma gelmese bile fotoğraflara baktığım zaman o kadar şey yaşanmış o kadar güzel günler geçirmişiz ki bunları görmek beni çok mutlu ediyor keşke doğum gününde yanında olabilseydim ya da elimden gelebilseydi sana bana verdiğin hediyeler kadar güzel hediyeler verebilseydim ama elimden bu kadar geliyor şimdilik geri dönünce bunların hepsinin telafisini yapıcam sana bunları fiziksel olarak vermek istiyordum aslında ama yanına gelene kadar en azından doğum gününde sana bir şey vermek istiyorum seni her şeyden ve herkesten daha çok seviyorum doğum günün kutlu olsun. 
+    <section class="finale" id="finale-section">
+        <p style="position: relative; z-index: 1;">
+            <span id="finale-typewriter" class="typewriter-box"> </span>
+            
         </p>
         
     </section>
@@ -833,6 +847,36 @@ O günü hatırlamıyorum ne yaptık ne ettik ama sanırım bu dörtlüden başk
                 }, 3000);
             }
         }
+        // KAPANIŞ SAYFASI DAKTİLO EFEKTİ
+        const finalMessage = "Daha böyle bir sürü anılarımız oldu tüm bunları düşününce bana tanıştığımız günden itibaren çok güzel anlar yaşattın bilge seni bu yüzden çok seviyorum beraber çok mutlu günlerimiz de oldu beraber ağladığımız günler de oldu fakat dönüp bu anılara baktıkça gerçekten mutlu olduğumu hissediyorum bu kadar güzel anılar biriktirmiş olmamız beni çok mutlu ediyor bu kadar iyi anlaşabilmemiz birbirimizi mutlu edebilmemiz benim için her şeyden daha önemli düşününce aklıma gelmese bile fotoğraflara baktığım zaman o kadar şey yaşanmış o kadar güzel günler geçirmişiz ki bunları görmek beni çok mutlu ediyor keşke doğum gününde yanında olabilseydim ya da elimden gelebilseydi sana bana verdiğin hediyeler kadar güzel hediyeler verebilseydim ama elimden bu kadar geliyor şimdilik geri dönünce bunların hepsinin telafisini yapıcam sana bunları fiziksel olarak vermek istiyordum aslında ama yanına gelene kadar en azından doğum gününde sana bir şey vermek istiyorum seni her şeyden ve herkesten daha çok seviyorum doğum günün kutlu olsun.";
+        let finalIndex = 0;
+        let isTypingStarted = false;
+
+        function typeFinalMessage() {
+            if (finalIndex < finalMessage.length) {
+                document.getElementById("finale-typewriter").textContent += finalMessage.charAt(finalIndex);
+                finalIndex++;
+                setTimeout(typeFinalMessage, 30);
+            } else {
+                // Yazı tamamen bitince, alttaki canlı sayacı yavaşça (2 saniyede) görünür yap!
+                document.getElementById("finale-counter-area").style.opacity = "1";
+            }
+        }
+
+        // Kullanıcı en alt sayfaya (finale) geldi mi diye kontrol eden sistem
+        const finaleObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                // Sayfanın yarısı ekranda göründüyse ve daha önce başlamadıysa
+                if (entry.isIntersecting && !isTypingStarted) {
+                    isTypingStarted = true;
+                    // Sayfaya girdikten yarım saniye sonra yazmaya başla (daha şık durur)
+                    setTimeout(typeFinalMessage, 500); 
+                }
+            });
+        }, { threshold: 0.5 }); 
+
+        // Gözlemciyi kapanış sayfasına bağla
+        finaleObserver.observe(document.getElementById('finale-section'));
         
     </script>
 
