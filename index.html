@@ -7,18 +7,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
-        /* YUMUŞAK VE MIKNATISLI SAYFA KAYDIRMA (SCROLL SNAP) */
+                                                                                                                                                                                             /* YUMUŞAK VE MIKNATISLI SAYFA KAYDIRMA (SCROLL SNAP) */
         html {
-            scroll-snap-type: y mandatory; /* Y (dikey) eksende sayfanın bölümlere yapışmasını zorunlu kılar */
-            scroll-behavior: smooth; /* Kaydırmanın animasyonlu ve yumuşak olmasını sağlar */
+            scroll-snap-type: y mandatory;                                                                                                                                                                                      /* Y (dikey) eksende sayfanın bölümlere yapışmasını zorunlu kılar */
+            scroll-behavior: smooth;                                                                                                                                                                                      /* Kaydırmanın animasyonlu ve yumuşak olmasını sağlar */
         }
 
-        /* Tüm ana bölümleri (Giriş, Anılar, Kapanış) birer "durak" olarak belirliyoruz */
+                                                                                                                                                                                             /* Tüm ana bölümleri (Giriş, Anılar, Kapanış) birer "durak" olarak belirliyoruz */
         .intro-section, 
         .section, 
         .finale {
-            scroll-snap-align: center; /* Kaydırma bittiğinde bölümü ekranın tam ortasına hizalar */
-            scroll-snap-stop: always; /* Fare tekerleğini çok hızlı çevirse bile sayfaları atlamayıp tek tek durdurur */
+            scroll-snap-align: center;                                                                                                                                                                                      /* Kaydırma bittiğinde bölümü ekranın tam ortasına hizalar */
+            scroll-snap-stop: always;                                                                                                                                                                                      /* Fare tekerleğini çok hızlı çevirse bile sayfaları atlamayıp tek tek durdurur */
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -27,11 +27,11 @@
             overflow-x: hidden;
             
             
-            background: linear-gradient(to bottom, #FCFBF9 0%, #e9dbf8 100%);
-            background-attachment: fixed; /* Kaydırdıkça arka plan sabit kalır, geçiş bozulmaz */
+            background: linear-gradient(to bottom, #FCFBF9 0%, #ddc1fb 100%);
+            background-attachment: fixed;                                                                                                                                                                                      /* Kaydırdıkça arka plan sabit kalır, geçiş bozulmaz */
         }
 
-        /* GİRİŞ SAYFASI ÖZEL TASARIMI */
+                                                                                                                                                                                             /* GİRİŞ SAYFASI ÖZEL TASARIMI */
         .intro-section {
             min-height: 100vh;
             display: flex;
@@ -50,10 +50,10 @@
         
         .intro-right { flex: 1; }
         
-        /* GİRİŞ SAYFASI ANA FOTOĞRAF YERLEŞİMİ */
+                                                                                                                                                                                             /* GİRİŞ SAYFASI ANA FOTOĞRAF YERLEŞİMİ */
         .intro-right .frame { width: 100%; max-width: 450px; margin: 0 auto; }
 
-        /* ANI SAYFALARI */
+                                                                                                                                                                                             /* ANI SAYFALARI */
         .section {
             min-height: 100vh;
             display: flex;
@@ -76,29 +76,29 @@
         .section:nth-child(even) .memory-content { flex-direction: row-reverse; }
         .memory-content.visible { opacity: 1; transform: translateY(0); }
 
-        /* YAZI KISMI */
+                                                                                                                                                                                             /* YAZI KISMI */
         .memory-text { flex: 1; }
         .memory-text h2 { font-weight: 600; margin-bottom: 15px; font-size: 2rem; color: #222; }
         .memory-text p { font-size: 1.1rem; line-height: 1.8; font-weight: 300; }
 
-        /* FOTOĞRAF IZGARA (GRID) SİSTEMİ */
+                                                                                                                                                                                             /* FOTOĞRAF IZGARA (GRID) SİSTEMİ */
         .memory-img { flex: 1.2; width: 100%; }
         
         .photo-grid { 
             display: grid; 
             gap: 15px; 
             width: 100%; 
-            align-items: center; /* Fotoğrafların sünmesini engeller */
+            align-items: center;                                                                                                                                                                                      /* Fotoğrafların sünmesini engeller */
         }
         
-        /* ÇERÇEVE ANA AYARLARI */
+                                                                                                                                                                                             /* ÇERÇEVE ANA AYARLARI */
         .frame {
             width: 100%;
             transition: transform 0.3s ease;
         }
         .frame:hover { transform: scale(1.02); }
         
-        /* SİHİRLİ KISIM: EĞER ÇERÇEVEDE FOTOĞRAF YOKSA (BOŞSA) ÇALIŞACAK KOD */
+                                                                                                                                                                                             /* SİHİRLİ KISIM: EĞER ÇERÇEVEDE FOTOĞRAF YOKSA (BOŞSA) ÇALIŞACAK KOD */
         .frame:not(:has(img)) {
             background-color: #f4f4f4; 
             border: 2px dashed #bbb; 
@@ -112,8 +112,8 @@
         }
         .frame:not(:has(img)) span { font-size: 0.9rem; font-weight: 600; padding: 20px; }
 
-        /* SİHİRLİ KISIM 2: EĞER ÇERÇEVEYE FOTOĞRAF EKLENDİYSE ÇALIŞACAK KOD */
-        /* FOTOĞRAFLARIN GÖRÜNÜMÜ VE HAFİF GÖLGE */
+                                                                                                                                                                                             /* SİHİRLİ KISIM 2: EĞER ÇERÇEVEYE FOTOĞRAF EKLENDİYSE ÇALIŞACAK KOD */
+                                                                                                                                                                                             /* FOTOĞRAFLARIN GÖRÜNÜMÜ VE HAFİF GÖLGE */
         .frame img {
             
             width: 100%;
@@ -122,19 +122,19 @@
             display: block;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
             
-            /* Üzerine gelince çalışacak animasyonun yumuşaklığı için */
+                                                                                                                                                                                                 /* Üzerine gelince çalışacak animasyonun yumuşaklığı için */
             transition: box-shadow 0.4s ease, transform 0.4s ease;
         }
 
-        /* FOTOĞRAFIN ÜZERİNE GELİNDİĞİNDE (HOVER) ÇALIŞACAK KOD */
+                                                                                                                                                                                             /* FOTOĞRAFIN ÜZERİNE GELİNDİĞİNDE (HOVER) ÇALIŞACAK KOD */
         .frame img:hover {
-            /* Fotoğraf çok ama çok hafif yukarı kalkar */
+                                                                                                                                                                                                 /* Fotoğraf çok ama çok hafif yukarı kalkar */
             transform: translateY(-4px); 
-            /* Gölge biraz daha belirginleşir ve yayılır */
+                                                                                                                                                                                                 /* Gölge biraz daha belirginleşir ve yayılır */
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
         }
 
-        /* BOŞ ÇERÇEVELERİN GEÇİCİ BOYUTLARI (Fotoğraf gelince iptal olurlar) */
+                                                                                                                                                                                             /* BOŞ ÇERÇEVELERİN GEÇİCİ BOYUTLARI (Fotoğraf gelince iptal olurlar) */
         .g-1 { grid-template-columns: 1fr; }
         .g-1 .frame { max-width: 450px; margin: 0 auto; }
         .g-1 .frame:not(:has(img)) { min-height: 500px; aspect-ratio: 4/5; }
@@ -161,7 +161,7 @@
         .g-7 .frame:nth-child(6), .g-7 .frame:nth-child(7) { grid-column: span 6; }
         .g-7 .frame:not(:has(img)) { min-height: 180px; }
 
-        /* BİZİM DURAKLARIMIZ BÖLÜMÜ TASARIMI */
+                                                                                                                                                                                             /* BİZİM DURAKLARIMIZ BÖLÜMÜ TASARIMI */
         .locations-container {
             flex-direction: column;
             gap: 40px;
@@ -184,14 +184,14 @@
             font-style: italic;
         }
 
-        /* YUKARIDAN AŞAĞI İNEN KESİK ÇİZGİ (YOL) */
+                                                                                                                                                                                             /* YUKARIDAN AŞAĞI İNEN KESİK ÇİZGİ (YOL) */
         .timeline {
             position: relative;
             max-width: 600px;
             width: 100%;
             margin: 0 auto;
             padding-left: 30px;
-            border-left: 2px dashed #ffb6b9; /* Romantik pembe kesik çizgi */
+            border-left: 2px dashed #ffb6b9;                                                                                                                                                                                      /* Romantik pembe kesik çizgi */
         }
 
         .timeline-item {
@@ -203,10 +203,10 @@
             margin-bottom: 0;
         }
 
-        /* YUVARLAK İKONLAR */
+                                                                                                                                                                                             /* YUVARLAK İKONLAR */
         .timeline-icon {
             position: absolute;
-            left: -48px; /* Çizginin tam üstüne oturtmak için */
+            left: -48px;                                                                                                                                                                                      /* Çizginin tam üstüne oturtmak için */
             top: 0;
             width: 35px;
             height: 35px;
@@ -220,7 +220,7 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
-        /* YAZI KUTULARI VE ANİMASYON */
+                                                                                                                                                                                             /* YAZI KUTULARI VE ANİMASYON */
         .timeline-content {
             background: rgba(255, 255, 255, 0.6);
             padding: 20px 25px;
@@ -229,7 +229,7 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         
-        /* Üzerine gelince kutu sağa kayar */
+                                                                                                                                                                                             /* Üzerine gelince kutu sağa kayar */
         .timeline-content:hover {
             transform: translateX(10px);
             box-shadow: 0 15px 40px rgba(0,0,0,0.08);
@@ -242,7 +242,7 @@
             margin-bottom: 5px;
         }
 
-        /* TARİH VE YER VURGUSU */
+                                                                                                                                                                                             /* TARİH VE YER VURGUSU */
         .location-date {
             display: block;
             font-size: 0.85rem;
@@ -258,7 +258,7 @@
             color: #555;
             line-height: 1.6;
         }
-        /* KAPANIŞ SAYFASI */
+                                                                                                                                                                                             /* KAPANIŞ SAYFASI */
         .finale { 
             min-height: 80vh; 
             display: flex; 
@@ -266,8 +266,8 @@
             justify-content: center; 
             text-align: center; 
             padding-bottom: 200px; 
-            position: relative; /* Kalbi hizalamak için eklendi */
-            overflow: hidden; /* Kalbin sayfa dışına taşmasını engeller */
+            position: relative;                                                                                                                                                                                      /* Kalbi hizalamak için eklendi */
+            overflow: hidden;                                                                                                                                                                                      /* Kalbin sayfa dışına taşmasını engeller */
         }
 
        
@@ -277,8 +277,8 @@
             top: 50%; 
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 90vw; /* Telefona göre esnemesi için */
-            max-width: 550px; /* Bilgisayarda çok devasa olmaması için sınır */
+            width: 90vw;                                                                                                                                                                                      /* Telefona göre esnemesi için */
+            max-width: 550px;                                                                                                                                                                                      /* Bilgisayarda çok devasa olmaması için sınır */
             height: 90vw;
             max-height: 550px;
             
@@ -286,14 +286,14 @@
             background-repeat: no-repeat;
             background-position: center;
             background-size: contain;
-            opacity: 0.25; /* %5 görünürlük - Suyu bulandırmayan muazzam bir şeffaflık */
-            z-index: 0; /* Yazıların arkasında kalmasını sağlar */
-            pointer-events: none; /* Yanlışlıkla seçilmeyi engeller */
+            opacity: 0.25;                                                                                                                                                                                      /* %5 görünürlük - Suyu bulandırmayan muazzam bir şeffaflık */
+            z-index: 0;                                                                                                                                                                                      /* Yazıların arkasında kalmasını sağlar */
+            pointer-events: none;                                                                                                                                                                                      /* Yanlışlıkla seçilmeyi engeller */
         }
 
 
         .finale p { font-size: 1.6rem; line-height: 2; max-width: 1200px; color: #444; padding-bottom: 0px; padding-top: 50px; text-align: justify; }
-/* METİN KRİPTOGRAMI TASARIMI */
+                                                                                                                                                                                     /* METİN KRİPTOGRAMI TASARIMI */
         .cryptogram-container {
             background: rgba(255, 255, 255, 0.6);
             border: 1px #222 solid ;
@@ -301,12 +301,12 @@
             border-radius: 15px;
             margin-bottom: 30px;
             text-align: center;
-            max-width: 700px; /* Cümle uzun olduğu için kutuyu biraz genişlettik */
+            max-width: 700px;                                                                                                                                                                                      /* Cümle uzun olduğu için kutuyu biraz genişlettik */
             margin-left: auto;
             margin-right: auto;
             box-shadow: 0 10px 25px rgba(0,0,0,0.03);
         }
-        /* DAKTİLO EFEKTİ İMLECİ */
+                                                                                                                                                                                             /* DAKTİLO EFEKTİ İMLECİ */
         .typewriter-box::after {
             content: '|';
             animation: blink 1s infinite;
@@ -334,12 +334,12 @@
             font-style: italic;
         }
 
-        /* Şifreli Kelimelerin Görünümü */
+                                                                                                                                                                                             /* Şifreli Kelimelerin Görünümü */
         .cipher-text {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 15px 25px; /* Kelimeler arası geniş boşluk */
+            gap: 15px 25px;                                                                                                                                                                                      /* Kelimeler arası geniş boşluk */
             margin-bottom: 35px;
         }
 
@@ -351,12 +351,12 @@
             font-family: 'Montserrat', monospace; 
             font-size: 1.4rem;
             font-weight: 600;
-            letter-spacing: 6px; /* Altına harf yazabilmesi için harf arası boşluklar */
+            letter-spacing: 6px;                                                                                                                                                                                      /* Altına harf yazabilmesi için harf arası boşluklar */
             color: #2a2a2a;
             border-bottom: 3px solid #f9f9f9; 
         }
 
-        /* İpucu Kutusunun Görünümü */
+                                                                                                                                                                                             /* İpucu Kutusunun Görünümü */
         .cipher-hint {
             
             border-left: 4px solid #ff2a4b;
@@ -373,7 +373,7 @@
             font-size: 0.9rem;
             color: #777;
         }   
-        /* GİZLİ KUTU TASARIMI */
+                                                                                                                                                                                             /* GİZLİ KUTU TASARIMI */
         .secret-box, .secret-message {
             background: rgba(255, 255, 255, 0.8);
             padding: 50px 40px;
@@ -388,7 +388,7 @@
         .lock-icon, .unlock-icon {
             font-size: 3.5rem;
             margin-bottom: 40px;
-            animation: floatLock 3s ease-in-out infinite; /* İkonu hafifçe havada süzülür gibi yapar */
+            animation: floatLock 3s ease-in-out infinite;                                                                                                                                                                                      /* İkonu hafifçe havada süzülür gibi yapar */
         }
 
         @keyframes floatLock {
@@ -411,7 +411,7 @@
             text-align: justify;
         }
 
-        /* ŞİFRE GİRİŞ ALANI */
+                                                                                                                                                                                             /* ŞİFRE GİRİŞ ALANI */
         .input-group {
             display: flex;
             gap: 15px;
@@ -458,7 +458,7 @@
             color: #ff2a4b;
             font-size: 0.9rem;
             font-weight: 600;
-            opacity: 0; /* Başlangıçta görünmez */
+            opacity: 0;                                                                                                                                                                                      /* Başlangıçta görünmez */
             transition: opacity 0.3s;
             margin-bottom: 0;
         }
@@ -470,34 +470,34 @@
             .frame:not(:has(img)) { min-height: 300px !important; width: 100% !important; }
             .g-1 .frame { max-width: 100%; }
         }
-        /* --- GİRİŞ SAYFASI YENİ EKLENTİLER --- */
+                                                                                                                                                                                             /* --- GİRİŞ SAYFASI YENİ EKLENTİLER --- */
         .intro-section {
-            position: relative; /* Scroll butonu için gerekli */
+            position: relative;                                                                                                                                                                                      /* Scroll butonu için gerekli */
         }
 
-        /* 1. 3D Parallax Kapsayıcısı */
+                                                                                                                                                                                             /* 1. 3D Parallax Kapsayıcısı */
         .parallax-container {
             position: relative;
             transform-style: preserve-3d;
-            transition: transform 0.1s ease-out; /* Fare hareketine pürüzsüz tepki */
+            transition: transform 0.1s ease-out;                                                                                                                                                                                      /* Fare hareketine pürüzsüz tepki */
             max-width: 450px;
             margin: 0 auto;
         }
 
-        /* 2. Cam Efektli (Glassmorphism) Rozet */
+                                                                                                                                                                                             /* 2. Cam Efektli (Glassmorphism) Rozet */
         .glass-badge {
             position: absolute;
             bottom: -15px;
             left: -25px;
-            background: rgba(255, 255, 255, 0.45); /* Yarı şeffaf beyaz */
-            backdrop-filter: blur(12px); /* Arkasını buzlu cam gibi flu yapar */
+            background: rgba(255, 255, 255, 0.45);                                                                                                                                                                                      /* Yarı şeffaf beyaz */
+            backdrop-filter: blur(12px);                                                                                                                                                                                      /* Arkasını buzlu cam gibi flu yapar */
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.6);
             padding: 12px 22px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             z-index: 10;
-            transform: translateZ(40px); /* 3D efektinde rozetin havada (önde) durmasını sağlar */
+            transform: translateZ(40px);                                                                                                                                                                                      /* 3D efektinde rozetin havada (önde) durmasını sağlar */
         }
 
         .glass-badge span {
@@ -508,7 +508,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* 3. Aşağı Kaydır (Scroll) İkonu */
+                                                                                                                                                                                             /* 3. Aşağı Kaydır (Scroll) İkonu */
         .scroll-down {
             position: absolute;
             bottom: 30px;
@@ -520,7 +520,7 @@
             gap: 8px;
             opacity: 0.7;
             animation: bounce 2s infinite ease-in-out;
-            pointer-events: none; /* Tıklanmayı engeller, yazıyı bozmaz */
+            pointer-events: none;                                                                                                                                                                                      /* Tıklanmayı engeller, yazıyı bozmaz */
         }
 
         .scroll-down span {
@@ -532,7 +532,7 @@
             font-weight: 600;
         }
 
-        /* Şık Mouse İkonu Çizimi */
+                                                                                                                                                                                             /* Şık Mouse İkonu Çizimi */
         .mouse-icon {
             width: 22px;
             height: 36px;
@@ -551,7 +551,7 @@
             height: 6px;
             background: #555;
             border-radius: 2px;
-            animation: scrollWheel 2s infinite; /* Tekerleğin aşağı kayma animasyonu */
+            animation: scrollWheel 2s infinite;                                                                                                                                                                                      /* Tekerleğin aşağı kayma animasyonu */
         }
 
         @keyframes bounce {
@@ -564,17 +564,17 @@
             100% { transform: translate(-50%, 15px); opacity: 0; }
         }
 
-        /* Mobil Uyum Düzeltmesi */
+                                                                                                                                                                                             /* Mobil Uyum Düzeltmesi */
         @media (max-width: 900px) {
             .glass-badge { bottom: -10px; left: 10px; padding: 10px 18px; }
             .scroll-down { bottom: 15px; }
         }
-        /* --- 1. SİNEMATİK AÇILIŞ PERDESİ --- */
+                                                                                                                                                                                             /* --- 1. SİNEMATİK AÇILIŞ PERDESİ --- */
         #preloader {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: #fdfbf7; /* Sitenin krem/fildişi tonu */
-            z-index: 99999; /* Her şeyin üstünde durması için */
+            background: #fdfbf7;                                                                                                                                                                                      /* Sitenin krem/fildişi tonu */
+            z-index: 99999;                                                                                                                                                                                      /* Her şeyin üstünde durması için */
             display: flex;
             align-items: center; justify-content: center;
             transition: opacity 0.8s ease, visibility 0.8s ease;
@@ -600,30 +600,31 @@
             100% { transform: scale(1.15); }
         }
 
-        /* --- 2. SAYFA İLERLEME ÇUBUĞU --- */
+                                                                                                                                                                                             /* --- 2. SAYFA İLERLEME ÇUBUĞU --- */
         #progress-bar {
             position: fixed;
             top: 0; left: 0;
             height: 4px;
-            background: linear-gradient(to right, #ffb6b9, #ff2a4b); /* Pembe'den kırmızıya şık geçiş */
+            background: linear-gradient(to right, #ffb6b9, #ff2a4b);                                                                                                                                                                                      /* Pembe'den kırmızıya şık geçiş */
             width: 0%;
             z-index: 99990;
             transition: width 0.1s ease-out;
             border-radius: 0 2px 2px 0;
         }
 
-        /* --- 3. SÜZÜLEREK EKRANA GELME (REVEAL) EFEKTİ --- */
+                                                                                                                                                                                             /* --- 3. SÜZÜLEREK EKRANA GELME (REVEAL) EFEKTİ --- */
         .reveal {
             opacity: 0;
-            transform: translateY(40px); /* Başlangıçta 40 piksel aşağıda durur */
-            transition: all 0.9s cubic-bezier(0.5, 0, 0, 1); /* Çok yumuşak bir kayma grafiği */
+            transform: translateY(40px);                                                                                                                                                                                      /* Başlangıçta 40 piksel aşağıda durur */
+            transition: all 0.9s cubic-bezier(0.5, 0, 0, 1);                                                                                                                                                                                      /* Çok yumuşak bir kayma grafiği */
         }
         
         .reveal.active {
             opacity: 1;
-            transform: translateY(0); /* Kendi yerine yerleşir */
+            transform: translateY(0);                                                                                                                                                                                      /* Kendi yerine yerleşir */
         }
     </style>
+
 </head>
 <body>
 
@@ -633,7 +634,7 @@
     <section class="intro-section">
         <div class="intro-left">
             <h1>Ömer ve Bilge’nin Sonsuz Sayılı Günleri</h1>
-            <p>Güzel sevgilim ile şimdiye kadar yaşadığımız güzel anılardan oluşan bir foto galeri</p>
+            <p>Güzel sevgilim ile şimdiye kadar yaşadığımız güzel anılardan oluşan bir foto galeri ve daha nicesi.</p>
             <div class="intro-mini-gallery">
                 <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 11.59.10 (5).jpeg" alt=""></span></div>
                 <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 12.01.34 (6).jpeg" alt=""></span></div>
@@ -661,9 +662,9 @@
             <div class="memory-img photo-grid g-1">
                 <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 12.16.31.jpeg" alt=""></span></div>
             </div>
-            <div class="memory-text"><h2>Tam bir klasik tanıştığımız ilk gün taksim gezisi</h2><p>Dünyanın en saçma gezisiydi ama tabii tanıştığımız ilk gün olduğu için yeri çok ayrı. Seni ilk defa o gün görmüştüm çok farklı bi tarzın var gibime gelmişti hatırlıyorum o yüzden sanırım biraz yakın hissettim. Bomboş taksim gezisi, aşırı kalabalık bi ekip ve bacak ağrısı ama yine de çok güzel bi gündü.
+            <div class="memory-text"><h2>Tam bir klasik tanıştığımız ilk gün taksim gezisi</h2><p>Dünyanın en saçma gezisiydi ama tabii tanıştığımız ilk gün olduğu için yeri çok ayrı. Seni ilk defa o gün görmüştüm. Çok farklı bir tarzın var gibi gelmişti hatırlıyorum o yüzden sanırım biraz yakın hissettim. Bomboş Taksim gezisi, aşırı kalabalık bir ekip ve bacak ağrısı ama yine de çok güzel bir gündü. Bu fotoğrafı hiç sevmediğini biliyorum ama bence çok tatlı bir fotoğraf.
 
--Bana o powerbanki veren babama burdan teşekkür ediyorum çok iyi şeylere vesile oldu.</p></div>
+                        <br><br>— Bana o powerbank'i veren Naz ablaya buradan teşekkür ediyorum, çok iyi şeylere vesile oldu.</p></div>
         </div>
     </section>
 
@@ -673,9 +674,7 @@
             <div class="memory-img photo-grid g-2">
                 <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 11.59.09 (1).jpeg" alt=""></span></div><div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 11.59.09.jpeg" alt=""></span></div>
             </div>
-            <div class="memory-text"><h2>Ne yaptığımızı gram hatırlamadığım o gün</h2><p>O gün sena beyza sen ve ben ne yaptık gram hatırlamıyorum ama bu fotoğrafı çektiğim için çok mutluyum benim için yeri ayrıdır... 
-
-O günü hatırlamıyorum ne yaptık ne ettik ama sanırım bu dörtlüden başkaları da vardı karşımızda oturan ada falan olması lazım bilmiyorum.</p></div>
+            <div class="memory-text"><h2>Ne yaptığımızı gram hatırlamadığım o gün</h2><p>O gün Sena, Beyza, sen ve ben ne yaptık gram hatırlamıyorum ama bu fotoğrafı çektiğim için çok mutluyum, benim için yeri ayrıdır... O günü hatırlamıyorum, ne yaptık, ne ettik ama sanırım bu dörtlüden başkaları da vardı, karşımızda oturan Ada falan olması lazım, bilmiyorum. Benim için sadece o efektli fotoğraf önemli.</p></div>
         </div>
     </section>
 
@@ -685,7 +684,7 @@ O günü hatırlamıyorum ne yaptık ne ettik ama sanırım bu dörtlüden başk
             <div class="memory-img photo-grid g-2">
                 <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 11.59.09 (3).jpeg" alt=""></span></div><div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 11.59.09 (4).jpeg" alt=""></span></div>
             </div>
-            <div class="memory-text"><h2>Ve tabii ki o kutlu gün halloween....</h2><p>halloween partisi cidden çok entersan bi gün oldu hiç beklemiyordum böyle ani olacağını ama iyi ki de olmuş hiçbir pişmanlığım yok bu konuda. Her şey çok hızlı ilerledi ani alkol ve o kalabalık danslar her şey böyle birden gerçekleşti gibime geliyor şimdi düşününce. İyi ki beraber gitmişiz o partiye iyi ki bütün bunlar yaşandı ve o günden beri beraberiz ama keşke o kadar terlemeseydim hiç güzel bi first impression değil.</p></div>
+            <div class="memory-text"><h2>Halloween...</h2><p>Halloween partisi cidden çok enteresan bir gün oldu. Hiç böyle ani olacağını beklemiyordum ama iyi ki de olmuş, bu konuda hiçbir pişmanlığım yok. Her şey çok hızlı ilerledi; ani alkol tüketimi ve o kalabalık danslar, her şey böyle birden gerçekleşti gibi geliyor şimdi düşününce. İyi ki o partiye beraber gitmişiz, iyi ki bütün bunlar yaşandı ve o günden beri beraberiz ama keşke o kadar terlemeseydim hiç güzel bir ilk izlenim değildi.</p></div>
         </div>
     </section>
 
@@ -695,7 +694,7 @@ O günü hatırlamıyorum ne yaptık ne ettik ama sanırım bu dörtlüden başk
             <div class="memory-img photo-grid g-1">
                 <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 11.59.09 (5).jpeg" alt=""></span></div>
             </div>
-            <div class="memory-text"><h2>Partiden sonra sizinkilerle tanıştığım gün ve yürüyüş</h2><p>Her Erzurumlu erkek gibi tabii benim de yakın erkek arkadaşlarını tanımam etmem lazım. Allahtan bir sorun çıkmadı tabii biraz da gerginlik de vardı ilk defa arkadaşlarınla tanışacak olmam ve olayların daha nerdeyse yeni yaşanmış olmasından kaynaklı olarak</p></div>
+            <div class="memory-text"><h2>Partiden sonra sizinkilerle tanıştığım gün ve yürüyüş</h2><p>O gün ne yürüyüşü vardı hatırlamıyorum ama benim için önemli olan ilk defa arkadaşlarınla tanışacak olmamdı. Tam o sıralar ilişkimiz tam böyle rayına oturmaya başlıyor gibiydi. Umut ve Mehmet de çok kafa insanlardı. Biraz endişeliydim acaba nasıl tiplerdi diye ama gayet güzel geçti her şey.</p></div>
         </div>
     </section>
 
@@ -706,7 +705,7 @@ O günü hatırlamıyorum ne yaptık ne ettik ama sanırım bu dörtlüden başk
                 <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 11.59.10 (3).jpeg" alt=""></span></div>
                 <div class="frame"><span><img src="dikeyfotolar/WhatsApp Image 2026-08-15 at 11.59.10 (2) (1).jpeg" alt=""></span></div><div class="frame"><span><img src="dikeyfotolar/WhatsApp Image 2026-08-15 at 11.59.10 (4).jpeg" alt=""></span></div>
             </div>
-            <div class="memory-text"><h2>Yine bi enteresan parti daha ama maskeli olanından</h2><p>Bu günden çok güzel fotoğraflarımız oldu onu fark ettim çok havalı hepsi ve maskelerimiz AŞIRI havalı çok eğlenceli bi gündü kombinlerimiz mükemmeldi ve yine çok havalı görünüyodun. Ufak bi kusma olayları yaşandı ama ondan da iyi dersler çıkarmış olduk sadece.</p></div>
+            <div class="memory-text"><h2>Yine bi enteresan parti daha ama maskeli olanından</h2><p>Bu güne ait çok güzel fotoğraflarımız olduğunu fark ettim, hepsi çok hoş ve maskelerimiz AŞIRI havalı. Çok eğlenceli bir gündü, kombinlerimiz mükemmeldi ve yine çok fıstık görünüyordun. Ufak bir kusma olayı yaşandı ama ondan da iyi dersler çıkarmış olduk sadece. O gün giydiğin kıyafetler hâlâ aklımda o kadar beğenmiştim ki. Konserin de böyle romantik bir havası vardı, ortam biraz karışıktı ama uzun sürmese de gayet eğlenceli bir gündü. Seni o kıyafetlerle görmek yetti bana. Bu kadar güzel fotoğraflar çeken Nehir'e teşekkürler.</p></div>
         </div>
     </section>
 
@@ -717,7 +716,7 @@ O günü hatırlamıyorum ne yaptık ne ettik ama sanırım bu dörtlüden başk
                 <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 11.59.10 (7).jpeg" alt=""></span></div>
                 <div class="frame"><span><img src="dikeyfotolar/WhatsApp Image 2026-08-15 at 11.59.10 (8).jpeg" alt=""></span></div><div class="frame"><span><img src="dikeyfotolar/WhatsApp Image 2026-08-15 at 11.59.11.jpeg" alt=""></span></div>
             </div>
-            <div class="memory-text"><h2>Çiçekli bilge</h2><p>Bu daha çiçeği fark etmediğin fotoğrafa çok gülüyorum baktıkça bilmiyorum artık o an aklından ne geçiyordu ama çok üzgün duruyosun ama ondan sonra çiçeği sevmene çok sevinmiştim.</p></div>
+            <div class="memory-text"><h2>Çiçekli bilge</h2><p>Bu daha çiçeği fark etmediğin fotoğrafa baktıkça çok gülüyorum. Bilmiyorum artık o an aklından ne geçiyordu ama çok üzgün duruyorsun. Ondan sonra çiçeği sevmene çok sevinmiştim. Hayatımda ilk defa birine böyle çiçek alıp vermiştim çok heyecanlıydı. Ve aşağıya bahane uydurup da gidemiyordum zar zor kaçtım koşa koşa gittim. Şu an hatırlamıyorum hangi bahaneyle gitmiştim ama yine de işe yaradı...s</p></div>
         </div>
     </section>
 
@@ -728,7 +727,7 @@ O günü hatırlamıyorum ne yaptık ne ettik ama sanırım bu dörtlüden başk
                 <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 11.59.11 (3).jpeg" alt=""></span></div><div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 11.59.11 (7).jpeg" alt=""></span></div>
                 <div class="frame"><span><img src="dikeyfotolar/WhatsApp Image 2026-08-15 at 11.59.11 (6).jpeg" alt=""></span></div><div class="frame"><span><img src="dikeyfotolar/WhatsApp Image 2026-08-15 at 11.59.11 (1).jpeg" alt=""></span></div>
             </div>
-            <div class="memory-text"><h2>Sevgililer Günü</h2><p>Sevgililer günümüz gerçekten çok güzel geçmişti bence aldığın hediyelerin hepsini gerçekten çok beğenmiştim hepsi çok düşünülerek alınmış şeylerdi yediğimiz pizzaların tadı muhteşemdi koşko yono yosok yao</p></div>
+            <div class="memory-text"><h2>Sevgililer Günü</h2><p>Sevgililer günümüz benim için çok önemli çünkü bana aldığın hediyelerin hepsi çok özenle alınmış şeylerdi yine her zamanki gibi. Ben de aşırı heyecanlıydım çünkü güzel bir yere gitmek için yer aramak ve randevu bulabilmek çok stresliydi, ama bence gittiğimiz yer gayet güzeldi ve pizzaları aşşşırı iyiydi. Özel bir gün bile olsa dana gibi yemek zorundayız...</p></div>
         </div>
     </section>
 
@@ -749,7 +748,7 @@ O günü hatırlamıyorum ne yaptık ne ettik ama sanırım bu dörtlüden başk
             <div class="memory-img photo-grid g-1">
                 <div class="frame"><span><img src="dikeyfotolar/WhatsApp Image 2026-08-15 at 12.04.44.jpeg" alt=""></span></div>
             </div>
-            <div class="memory-text"><h2>Bana aldığın harika destansı mükemmel hediye</h2><p>Bu hediyeyi çok sevmemim nedeni hem gerçekten bayıldığım bi saat modeli olması ama ondan daha önemlisi senin bu saati sevdiğimi sana öylesine söylediğim zaman bunu aklında tutup o kadar zaman bekleyip bana alman beni gerçekten çok mutlu etmişti ve aldığım zaman da aşırı şaşırmıştım sen bunu nerden aklında tuttun da buldun da aldın gerçekten çok teşekkür ederim....</p></div>
+            <div class="memory-text"><h2>Bana aldığın harika destansı mükemmel hediye</h2><p>Bu hediyeyi çok sevmemin nedeni hem gerçekten bayıldığım bir saat modeli olması hem de, ondan daha önemlisi, senin bu saati sevdiğimi sana öylesine söylediğim zaman bunu aklında tutup o kadar zaman bekleyip bana alman. Bu beni gerçekten çok mutlu etmişti ve aldığımda da aşırı şaşırmıştım. Sen bunu nereden aklında tuttun da buldun da aldın yani amk. Çok teşekkür ederim...</p></div>
         </div>
     </section>
 
@@ -760,7 +759,7 @@ O günü hatırlamıyorum ne yaptık ne ettik ama sanırım bu dörtlüden başk
                 <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 12.01.33 (3).jpeg" alt=""></span></div>
                 <div class="frame"><span><img src="dikeyfotolar/WhatsApp Image 2026-08-15 at 12.01.33 (2).jpeg" alt=""></span></div><div class="frame"><span><img src="dikeyfotolar/WhatsApp Image 2026-08-15 at 12.01.33 (1).jpeg" alt=""></span></div>
             </div>
-            <div class="memory-text"><h2>Dünyanın en muhteşem günlerinden biri</h2><p>Hayatımda yediğim en güzel sandwichin yapıldığı o gün her yanıyla çok güzeldi böyle bi fırsatımızın olması çok güzel oldu o yediğimiz yemekler ve kahvaltı hala aklımda her yanıyla mükemmel geçen 2 gün</p></div>
+            <div class="memory-text"><h2>Dünyanın en muhteşem günlerinden biri</h2><p>Hayatımda yediğim en güzel sandviçin yapıldığı o gün her yanıyla çok güzeldi. Böyle bir fırsatımızın olması çok güzel oldu. O yediğimiz yemekler ve kahvaltı hâlâ aklımda. Her yanıyla mükemmel geçen iki gün. Öyle beraber 2 gün geçirince aklıma sadece böyle yaşayabilme ihtimalimiz geliyor ve bunu acilen istiyorum..</p></div>
         </div>
     </section>
 
@@ -782,7 +781,7 @@ O günü hatırlamıyorum ne yaptık ne ettik ama sanırım bu dörtlüden başk
             <div class="memory-img photo-grid g-1">
                 <div class="frame"><span><img src="dikeyfotolar/WhatsApp Image 2026-08-15 at 12.01.37 (6).jpeg" alt=""></span></div>
             </div>
-            <div class="memory-text"><h2></h2><p>Bu seneki doğum günüm gerçekten bu yaşıma kadar benim için yapılan en iyi doğum günüydü hiç böyle hediyeler almamıştım ya da benim için bu kadar şeyler yapılmamıştı ama sen taa ne zaman öncesinden bunları planlayıp her şeyi düşünüp bana böyle bi doğum günü yaşatman gerçekten harikaydı her detayı çok güzel düşünülmüştü aşırı keyif aldım bütün hediyeleri çok beğendim hepsi belli ayrı ayrı çok fena bi emek harcanmış bu yüzden sana doğum gününde çok daha güzel şeyler yapmak istiyordum ama zamanı çok kötü denk geldi o yüzden yanında olamicam doğum gününde bu beni çok üzüyor ama yine de bütün bunlar için çok teşekkür ederim</p></div>
+            <div class="memory-text"><h2></h2><p>Bu seneki doğum günüm gerçekten bu yaşıma kadar benim için yapılan en iyi doğum günüydü. Hiç böyle hediyeler almamıştım ya da benim için bu kadar şey yapılmamıştı. Ama sen çok öncesinden bunları planlayıp her şeyi düşünüp bana böyle bir doğum günü yaşatman gerçekten harikaydı. Her detayı çok güzel düşünülmüştü, aşırı keyif aldım. Bütün hediyeleri çok beğendim. Hepsi için belli ki ayrı ayrı çok fena bir emek harcanmış. Bu yüzden sana doğum gününde çok daha güzel şeyler yapmak istiyordum ama zamanı çok kötü denk geldi. O yüzden yanında olamayacağım doğum gününde. Bu beni çok üzüyor ama yine de bütün bunlar için çok teşekkür ederim.</p></div>
         </div>
     </section>
 
@@ -793,7 +792,7 @@ O günü hatırlamıyorum ne yaptık ne ettik ama sanırım bu dörtlüden başk
                 <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 12.01.34 (5).jpeg" alt=""></span></div><div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 12.01.34 (7).jpeg" alt=""></span></div>
                 <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 12.01.34 (6).jpeg" alt=""></span></div><div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 12.01.34 (8).jpeg" alt=""></span></div><div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 12.01.34 (9).jpeg" alt=""></span></div>
             </div>
-            <div class="memory-text"><h2>Adalar Gezimiz</h2><p>Adalar gezimiz ve o muhteşem dondurmalarımız bu geziden fotolarımızı çok beğeniyorum hele ki bu yazının üstünde olan fotoda çok tatlı çıkmışsın tekrarlanması gereken bir date... </p></div>
+            <div class="memory-text"><h2>Adalar Gezimiz</h2><p>Adalar gezimiz ve o muhteşem dondurmalarımız. Bu gezideki fotoğraflarımızı çok beğeniyorum. Çok eğlenceli bir geziydi sadece tepeye bisikletle çıkma işi yorucuydu ama yokuş aşağı bisiklet sürmek aşırı keyifliydi. O günden en favori anım çimenlikte o kütüğün üstünde oturmamızdı. Kesinlikle tekrarlanması gereken bir date... </p></div>
         </div>
     </section>
 
@@ -803,7 +802,7 @@ O günü hatırlamıyorum ne yaptık ne ettik ama sanırım bu dörtlüden başk
             <div class="memory-img photo-grid g-1">
                 <div class="frame"><span><img src="dikeyfotolar/WhatsApp Image 2026-08-15 at 12.01.35 (2).jpeg" alt=""></span></div>
             </div>
-            <div class="memory-text"><h2>Mükemmel bir ikea date</h2><p>Erzurum’a gelmeden bunu yapmak istiyordum gezerken böyle odaları evleri gördükçe seninle bi eski püskü dandik bi evi yeniden restore etmek istedim o odalar gibi küçük de olsa bize ait olan bi evde kalıyor olmamız düşüncesi çok güzel geliyordu umarım en kısa sürede yaparız bunları bu yüzden çok seviyorum ikea datemizi ama keşke yemekleri de güzel olsa amına koyim.</p></div>
+            <div class="memory-text"><h2>Mükemmel bir ikea date</h2><p>Erzurum’a gelmeden bunu yapmak istiyordum. Gezerken böyle odaları, evleri gördükçe seninle eski püskü, dandik bir evi yeniden restore etmek istedim. O odalar gibi küçük de olsa bize ait olan bir evde kalıyor olmamız düşüncesi çok güzel geliyordu. Umarım en kısa sürede yaparız bunları. Bu yüzden IKEA date’imizi çok seviyorum ama keşke yemekleri de güzel olsa amına koyim.</p></div>
         </div>
     </section>
 
@@ -813,7 +812,7 @@ O günü hatırlamıyorum ne yaptık ne ettik ama sanırım bu dörtlüden başk
             <div class="memory-img photo-grid g-2">
                 <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 12.01.34 (3) (1).jpeg" alt=""></span></div><div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 12.01.34 (2).jpeg" alt=""></span></div>
             </div>
-            <div class="memory-text"><h2>Cancanlar ile içmece günü</h2><p>Ben hayatımda ilk defa bu kadar fazla bira içebilmiştim normal bi tane içip devamını asla getiremem ama o gün nedense içtikçe içmeye devam ettik dana gibi aşşırı eğlenceli bi gündü İstanbul’a geldiğimde bunu yine yapmamız lazım.</p></div>
+            <div class="memory-text"><h2>Cancanlar ile içmece günü</h2><p>Ben hayatımda ilk defa bu kadar fazla bira içebildim. Normalde bir tane içip devamını asla getiremem ama o gün nedense içtikçe içmeye devam ettik dana gibi. Aşırı eğlenceli bir gündü. Tabii deli gibi öpüşmemiz de cabası. İstanbul’a geldiğimde bunu yine yapmamız lazım.</p></div>
         </div>
     </section>
 
@@ -823,7 +822,7 @@ O günü hatırlamıyorum ne yaptık ne ettik ama sanırım bu dörtlüden başk
             <div class="memory-img photo-grid g-1">
                 <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 12.01.33.jpeg" alt=""></span></div>
             </div>
-            <div class="memory-text"><h2>Dizlerin kırıldığı paten günleri</h2><p>Ne kadar paten sürmekte ustalaşmaya çok yaklaşmış olsam da başımıza gelen talihsiz olaylar nedeniyle yarıda bırakmak durumunda kaldık ama yine de gittiğimiz günler çok eğlenmiştim paten sürmeyi gram beceremesem de ikimizin de götümüzün üstüne düşmesi çok komikti.</p></div>
+            <div class="memory-text"><h2>Dizlerin kırıldığı paten günleri</h2><p>Ne kadar paten sürmede ustalaşmaya çok yaklaşmış olsak da başımıza gelen talihsiz olaylar nedeniyle yarıda bırakmak durumunda kaldık, ama yine de gittiğimiz günlerde çok eğlenmiştim. Paten sürmeyi gram beceremesem de ikimizin de götümüzün üstüne düşmesi çok komikti. Belki bu sene tekrar devam ederiz.</p></div>
         </div>
     </section>
 
@@ -833,7 +832,7 @@ O günü hatırlamıyorum ne yaptık ne ettik ama sanırım bu dörtlüden başk
             <div class="memory-img photo-grid g-1">
                 <div class="frame"><span><img src="dikeyfotolar/WhatsApp Image 2026-08-15 at 12.01.39.jpeg" alt=""></span></div>
             </div>
-            <div class="memory-text"><h2>Beraber kaldığımız ilk gece ve Yılbaşı</h2><p>Yılbaşı hakkında çok da bir şey dememe gerek yok benim için bir çok ilkin yaşandığı bir geceydi ve beraber de tabii ki bir çok ilki yaşadık yani bu anıları düşünüyorum sanki yıllar önce yaşanmış şeyler gibime geliyor ama 8 ay önce olmuş çok garip hissettiriyor bu sanki yıllardır beraberiz gibi hissettiriyor. Bu gecenin tek kötü yanı alkoldu o çok gereksiz kaçtı ama yine de günün geri kalan mükemmel anlarını hiç etkilemedi...</p></div>
+            <div class="memory-text"><h2>Beraber kaldığımız ilk gece ve Yılbaşı</h2><p>Yılbaşı hakkında çok da bir şey dememe gerek yok. Benim için birçok ilkin yaşandığı bir geceydi ve beraber de tabii ki birçok ilki yaşadık. Yani bu anıları düşünüyorum, sanki yıllar önce yaşanmış şeyler gibi geliyor ama 8 ay önce olmuş. Çok garip hissettiriyor sanki yıllardır beraberiz gibi hissettiriyor. Bu gecenin tek kötü yanı alkoldü. O çok gereksiz kaçtı ama yine de günün geri kalan mükemmel anlarını hiç etkilemedi...</p></div>
         </div>
     </section>
 <!-- BİZİM DURAKLARIMIZ (KONUMLAR) BÖLÜMÜ -->
@@ -933,7 +932,7 @@ O günü hatırlamıyorum ne yaptık ne ettik ama sanırım bu dörtlüden başk
 <section class="section">
     <div class="cryptogram-container" id="crypto-ui">
                 <h3>Küçük Bir Cryptogram Oyunu</h3>
-                <p>Aşağ(ğ)ıdaki şifrelenmiş metni deşifre ederek kilidi açabilirsin</p>
+                <p>Aşağ(ğ)ıdaki şifrelenmiş metni deşifre ederek kilidi açmalısın.</p>
                 
                 <!-- Şifrelenmiş Metin -->
                 <div class="cipher-text">
@@ -1237,7 +1236,6 @@ O günü hatırlamıyorum ne yaptık ne ettik ama sanırım bu dörtlüden başk
             }, 120);
         });
 
-        // --- 2. SAYFA İLERLEME ÇUBUĞU KODU ---
         window.addEventListener('scroll', () => {
             const scrollTop = window.scrollY;
             const docHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -1245,16 +1243,14 @@ O günü hatırlamıyorum ne yaptık ne ettik ama sanırım bu dörtlüden başk
             document.getElementById('progress-bar').style.width = scrollPercent + '%';
         });
 
-        // --- 3. SÜZÜLEREK EKRANA GELME (REVEAL) GÖZLEMCİSİ ---
         const revealObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if(entry.isIntersecting) {
-                    entry.target.classList.add('active'); // Ekrana girince active sınıfını ekle
+                    entry.target.classList.add('active'); 
                 }
             });
-        }, { threshold: 0.15 }); // Elementin %15'i ekranda göründüğü an animasyon başlar
+        }, { threshold: 0.15 });
 
-        // Sayfa yüklendiğinde reveal class'ı olan her şeyi gözlemlemeye başla
         document.addEventListener('DOMContentLoaded', () => {
             const revealElements = document.querySelectorAll('.reveal');
             revealElements.forEach(el => revealObserver.observe(el));
