@@ -20,6 +20,27 @@
             scroll-snap-align: center;                                                                                                                                                                                      /* Kaydırma bittiğinde bölümü ekranın tam ortasına hizalar */
             scroll-snap-stop: always;                                                                                                                                                                                      /* Fare tekerleğini çok hızlı çevirse bile sayfaları atlamayıp tek tek durdurur */
         }
+
+        body {
+            -webkit-user-select: none; /* Safari, Chrome, Opera */
+            -moz-user-select: none;    /* Firefox */
+            -ms-user-select: none;     /* Edge */
+            user-select: none;         /* Standart */
+        }
+
+
+        input, textarea {
+            -webkit-user-select: auto;
+            -moz-user-select: auto;
+            -ms-user-select: auto;
+            user-select: auto;
+        }
+
+
+        img {
+            -webkit-user-drag: none; 
+        }
+        
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Montserrat', sans-serif;
