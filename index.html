@@ -935,6 +935,7 @@
                 <p>Aşağ(ğ)ıdaki şifrelenmiş metni deşifre ederek kilidi açmalısın.</p>
                 
                 <!-- Şifrelenmiş Metin -->
+                <!-- Şifrelenmiş Metin (18 AĞUSTOS VERSİYONU) -->
                 <div class="cipher-text">
                     <span class="word">MPTPCP</span>
                     <span class="word">YVHYM</span>
@@ -946,7 +947,7 @@
                     <span class="word">WYBKTY</span>
                     <span class="word">KS</span>
                     <span class="word">ŞLMPR</span>
-                    <span class="word">LMPH</span>
+                    <span class="word">YAFŞEKŞ</span>
                 </div>
                 
                 <!-- İpucu -->
@@ -1003,8 +1004,8 @@
             const input = document.getElementById('secret-code').value;
             const errorMsg = document.getElementById('error-message');
             
-            // BURADAKİ '1810' KISMINI İSTEDİĞİN 4 RAKAMLA DEĞİŞTİREBİLİRSİN
-            if(input === '1810') {
+          
+            if(input === '1808') {
                 // Şifre doğruysa kilit ekranını gizle ve asıl mesajı göster
                 document.getElementById('secret-ui').style.display = 'none';
                 
@@ -1236,6 +1237,7 @@
             }, 120);
         });
 
+        // --- 2. SAYFA İLERLEME ÇUBUĞU KODU ---
         window.addEventListener('scroll', () => {
             const scrollTop = window.scrollY;
             const docHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -1243,14 +1245,16 @@
             document.getElementById('progress-bar').style.width = scrollPercent + '%';
         });
 
+        // --- 3. SÜZÜLEREK EKRANA GELME (REVEAL) GÖZLEMCİSİ ---
         const revealObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if(entry.isIntersecting) {
-                    entry.target.classList.add('active'); 
+                    entry.target.classList.add('active'); // Ekrana girince active sınıfını ekle
                 }
             });
-        }, { threshold: 0.15 });
+        }, { threshold: 0.15 }); // Elementin %15'i ekranda göründüğü an animasyon başlar
 
+        // Sayfa yüklendiğinde reveal class'ı olan her şeyi gözlemlemeye başla
         document.addEventListener('DOMContentLoaded', () => {
             const revealElements = document.querySelectorAll('.reveal');
             revealElements.forEach(el => revealObserver.observe(el));
