@@ -7,28 +7,28 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
-                                                                                                                                                                                             /* YUMUŞAK VE MIKNATISLI SAYFA KAYDIRMA (SCROLL SNAP) */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      /* YUMUŞAK VE MIKNATISLI SAYFA KAYDIRMA (SCROLL SNAP) */
         html {
-            scroll-snap-type: y mandatory;                                                                                                                                                                                      /* Y (dikey) eksende sayfanın bölümlere yapışmasını zorunlu kılar */
-            scroll-behavior: smooth;                                                                                                                                                                                      /* Kaydırmanın animasyonlu ve yumuşak olmasını sağlar */
+            scroll-snap-type: y mandatory;                                                                                                                                                                                                                                                                                                                                                                                                                                                                               /* Y (dikey) eksende sayfanın bölümlere yapışmasını zorunlu kılar */
+            scroll-behavior: smooth;                                                                                                                                                                                                                                                                                                                                                                                                                                                                               /* Kaydırmanın animasyonlu ve yumuşak olmasını sağlar */
         }
 
-                                                                                                                                                                                             /* Tüm ana bölümleri (Giriş, Anılar, Kapanış) birer "durak" olarak belirliyoruz */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      /* Tüm ana bölümleri (Giriş, Anılar, Kapanış) birer "durak" olarak belirliyoruz */
         .intro-section, 
         .section, 
         .finale {
-            scroll-snap-align: center;                                                                                                                                                                                      /* Kaydırma bittiğinde bölümü ekranın tam ortasına hizalar */
-            scroll-snap-stop: always;                                                                                                                                                                                      /* Fare tekerleğini çok hızlı çevirse bile sayfaları atlamayıp tek tek durdurur */
+            scroll-snap-align: center;                                                                                                                                                                                                                                                                                                                                                                                                                                                                               /* Kaydırma bittiğinde bölümü ekranın tam ortasına hizalar */
+            scroll-snap-stop: always;                                                                                                                                                                                                                                                                                                                                                                                                                                                                               /* Fare tekerleğini çok hızlı çevirse bile sayfaları atlamayıp tek tek durdurur */
         }
 
         body {
-            -webkit-user-select: none; /* Safari, Chrome, Opera */
-            -moz-user-select: none;    /* Firefox */
-            -ms-user-select: none;     /* Edge */
-            user-select: none;         /* Standart */
+            -webkit-user-select: none;                                                                                                                                                                                                                                                                                          /* Safari, Chrome, Opera */
+            -moz-user-select: none;                                                                                                                                                                                                                                                                                             /* Firefox */
+            -ms-user-select: none;                                                                                                                                                                                                                                                                                              /* Edge */
+            user-select: none;                                                                                                                                                                                                                                                                                                  /* Standart */
         }
 
-
+                                                                                                                                                                                                                                                                                                 /* ŞİFRE KUTUSUNU HARİÇ TUT (Şifre yazabilmesi için mecburi) */
         input, textarea {
             -webkit-user-select: auto;
             -moz-user-select: auto;
@@ -36,11 +36,10 @@
             user-select: auto;
         }
 
-
+                                                                                                                                                                                                                                                                                                 /* FOTOĞRAFLARIN SÜRÜKLENMESİNİ ENGELLEME */
         img {
-            -webkit-user-drag: none; 
+            -webkit-user-drag: none;                                                                                                                                                                                                                                                                                          /* Resimlerin fareyle tutulup sürüklenmesini engeller */
         }
-        
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Montserrat', sans-serif;
@@ -49,10 +48,10 @@
             
             
             background: linear-gradient(to bottom, #FCFBF9 0%, #ddc1fb 100%);
-            background-attachment: fixed;                                                                                                                                                                                      /* Kaydırdıkça arka plan sabit kalır, geçiş bozulmaz */
+            background-attachment: fixed;                                                                                                                                                                                                                                                                                                                                                                                                                                                                               /* Kaydırdıkça arka plan sabit kalır, geçiş bozulmaz */
         }
 
-                                                                                                                                                                                             /* GİRİŞ SAYFASI ÖZEL TASARIMI */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      /* GİRİŞ SAYFASI ÖZEL TASARIMI */
         .intro-section {
             min-height: 100vh;
             display: flex;
@@ -71,10 +70,10 @@
         
         .intro-right { flex: 1; }
         
-                                                                                                                                                                                             /* GİRİŞ SAYFASI ANA FOTOĞRAF YERLEŞİMİ */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      /* GİRİŞ SAYFASI ANA FOTOĞRAF YERLEŞİMİ */
         .intro-right .frame { width: 100%; max-width: 450px; margin: 0 auto; }
 
-                                                                                                                                                                                             /* ANI SAYFALARI */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      /* ANI SAYFALARI */
         .section {
             min-height: 100vh;
             display: flex;
@@ -97,29 +96,29 @@
         .section:nth-child(even) .memory-content { flex-direction: row-reverse; }
         .memory-content.visible { opacity: 1; transform: translateY(0); }
 
-                                                                                                                                                                                             /* YAZI KISMI */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      /* YAZI KISMI */
         .memory-text { flex: 1; }
         .memory-text h2 { font-weight: 600; margin-bottom: 15px; font-size: 2rem; color: #222; }
-        .memory-text p { font-size: 1.1rem; line-height: 1.8; font-weight: 300; }
+        .memory-text p { font-size: 1.2rem; line-height: 1.8; font-weight: 300; text-align: justify;}
 
-                                                                                                                                                                                             /* FOTOĞRAF IZGARA (GRID) SİSTEMİ */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      /* FOTOĞRAF IZGARA (GRID) SİSTEMİ */
         .memory-img { flex: 1.2; width: 100%; }
         
         .photo-grid { 
             display: grid; 
             gap: 15px; 
             width: 100%; 
-            align-items: center;                                                                                                                                                                                      /* Fotoğrafların sünmesini engeller */
+            align-items: center;                                                                                                                                                                                                                                                                                                                                                                                                                                                                               /* Fotoğrafların sünmesini engeller */
         }
         
-                                                                                                                                                                                             /* ÇERÇEVE ANA AYARLARI */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      /* ÇERÇEVE ANA AYARLARI */
         .frame {
             width: 100%;
             transition: transform 0.3s ease;
         }
         .frame:hover { transform: scale(1.02); }
         
-                                                                                                                                                                                             /* SİHİRLİ KISIM: EĞER ÇERÇEVEDE FOTOĞRAF YOKSA (BOŞSA) ÇALIŞACAK KOD */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      /* SİHİRLİ KISIM: EĞER ÇERÇEVEDE FOTOĞRAF YOKSA (BOŞSA) ÇALIŞACAK KOD */
         .frame:not(:has(img)) {
             background-color: #f4f4f4; 
             border: 2px dashed #bbb; 
@@ -133,8 +132,8 @@
         }
         .frame:not(:has(img)) span { font-size: 0.9rem; font-weight: 600; padding: 20px; }
 
-                                                                                                                                                                                             /* SİHİRLİ KISIM 2: EĞER ÇERÇEVEYE FOTOĞRAF EKLENDİYSE ÇALIŞACAK KOD */
-                                                                                                                                                                                             /* FOTOĞRAFLARIN GÖRÜNÜMÜ VE HAFİF GÖLGE */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      /* SİHİRLİ KISIM 2: EĞER ÇERÇEVEYE FOTOĞRAF EKLENDİYSE ÇALIŞACAK KOD */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      /* FOTOĞRAFLARIN GÖRÜNÜMÜ VE HAFİF GÖLGE */
         .frame img {
             
             width: 100%;
@@ -143,19 +142,19 @@
             display: block;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
             
-                                                                                                                                                                                                 /* Üzerine gelince çalışacak animasyonun yumuşaklığı için */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          /* Üzerine gelince çalışacak animasyonun yumuşaklığı için */
             transition: box-shadow 0.4s ease, transform 0.4s ease;
         }
 
-                                                                                                                                                                                             /* FOTOĞRAFIN ÜZERİNE GELİNDİĞİNDE (HOVER) ÇALIŞACAK KOD */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      /* FOTOĞRAFIN ÜZERİNE GELİNDİĞİNDE (HOVER) ÇALIŞACAK KOD */
         .frame img:hover {
-                                                                                                                                                                                                 /* Fotoğraf çok ama çok hafif yukarı kalkar */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          /* Fotoğraf çok ama çok hafif yukarı kalkar */
             transform: translateY(-4px); 
-                                                                                                                                                                                                 /* Gölge biraz daha belirginleşir ve yayılır */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          /* Gölge biraz daha belirginleşir ve yayılır */
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
         }
 
-                                                                                                                                                                                             /* BOŞ ÇERÇEVELERİN GEÇİCİ BOYUTLARI (Fotoğraf gelince iptal olurlar) */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      /* BOŞ ÇERÇEVELERİN GEÇİCİ BOYUTLARI (Fotoğraf gelince iptal olurlar) */
         .g-1 { grid-template-columns: 1fr; }
         .g-1 .frame { max-width: 450px; margin: 0 auto; }
         .g-1 .frame:not(:has(img)) { min-height: 500px; aspect-ratio: 4/5; }
@@ -182,7 +181,7 @@
         .g-7 .frame:nth-child(6), .g-7 .frame:nth-child(7) { grid-column: span 6; }
         .g-7 .frame:not(:has(img)) { min-height: 180px; }
 
-                                                                                                                                                                                             /* BİZİM DURAKLARIMIZ BÖLÜMÜ TASARIMI */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      /* BİZİM DURAKLARIMIZ BÖLÜMÜ TASARIMI */
         .locations-container {
             flex-direction: column;
             gap: 40px;
@@ -205,14 +204,14 @@
             font-style: italic;
         }
 
-                                                                                                                                                                                             /* YUKARIDAN AŞAĞI İNEN KESİK ÇİZGİ (YOL) */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      /* YUKARIDAN AŞAĞI İNEN KESİK ÇİZGİ (YOL) */
         .timeline {
             position: relative;
             max-width: 600px;
             width: 100%;
             margin: 0 auto;
             padding-left: 30px;
-            border-left: 2px dashed #ffb6b9;                                                                                                                                                                                      /* Romantik pembe kesik çizgi */
+            border-left: 2px dashed #ffb6b9;                                                                                                                                                                                                                                                                                                                                                                                                                                                                               /* Romantik pembe kesik çizgi */
         }
 
         .timeline-item {
@@ -224,10 +223,10 @@
             margin-bottom: 0;
         }
 
-                                                                                                                                                                                             /* YUVARLAK İKONLAR */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      /* YUVARLAK İKONLAR */
         .timeline-icon {
             position: absolute;
-            left: -48px;                                                                                                                                                                                      /* Çizginin tam üstüne oturtmak için */
+            left: -48px;                                                                                                                                                                                                                                                                                                                                                                                                                                                                               /* Çizginin tam üstüne oturtmak için */
             top: 0;
             width: 35px;
             height: 35px;
@@ -241,7 +240,7 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
-                                                                                                                                                                                             /* YAZI KUTULARI VE ANİMASYON */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      /* YAZI KUTULARI VE ANİMASYON */
         .timeline-content {
             background: rgba(255, 255, 255, 0.6);
             padding: 20px 25px;
@@ -250,7 +249,7 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         
-                                                                                                                                                                                             /* Üzerine gelince kutu sağa kayar */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      /* Üzerine gelince kutu sağa kayar */
         .timeline-content:hover {
             transform: translateX(10px);
             box-shadow: 0 15px 40px rgba(0,0,0,0.08);
@@ -263,7 +262,7 @@
             margin-bottom: 5px;
         }
 
-                                                                                                                                                                                             /* TARİH VE YER VURGUSU */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      /* TARİH VE YER VURGUSU */
         .location-date {
             display: block;
             font-size: 0.85rem;
@@ -279,7 +278,7 @@
             color: #555;
             line-height: 1.6;
         }
-                                                                                                                                                                                             /* KAPANIŞ SAYFASI */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      /* KAPANIŞ SAYFASI */
         .finale { 
             min-height: 80vh; 
             display: flex; 
@@ -287,8 +286,8 @@
             justify-content: center; 
             text-align: center; 
             padding-bottom: 200px; 
-            position: relative;                                                                                                                                                                                      /* Kalbi hizalamak için eklendi */
-            overflow: hidden;                                                                                                                                                                                      /* Kalbin sayfa dışına taşmasını engeller */
+            position: relative;                                                                                                                                                                                                                                                                                                                                                                                                                                                                               /* Kalbi hizalamak için eklendi */
+            overflow: hidden;                                                                                                                                                                                                                                                                                                                                                                                                                                                                               /* Kalbin sayfa dışına taşmasını engeller */
         }
 
        
@@ -298,8 +297,8 @@
             top: 50%; 
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 90vw;                                                                                                                                                                                      /* Telefona göre esnemesi için */
-            max-width: 550px;                                                                                                                                                                                      /* Bilgisayarda çok devasa olmaması için sınır */
+            width: 90vw;                                                                                                                                                                                                                                                                                                                                                                                                                                                                               /* Telefona göre esnemesi için */
+            max-width: 550px;                                                                                                                                                                                                                                                                                                                                                                                                                                                                               /* Bilgisayarda çok devasa olmaması için sınır */
             height: 90vw;
             max-height: 550px;
             
@@ -307,14 +306,14 @@
             background-repeat: no-repeat;
             background-position: center;
             background-size: contain;
-            opacity: 0.25;                                                                                                                                                                                      /* %5 görünürlük - Suyu bulandırmayan muazzam bir şeffaflık */
-            z-index: 0;                                                                                                                                                                                      /* Yazıların arkasında kalmasını sağlar */
-            pointer-events: none;                                                                                                                                                                                      /* Yanlışlıkla seçilmeyi engeller */
+            opacity: 0.25;                                                                                                                                                                                                                                                                                                                                                                                                                                                                               /* %5 görünürlük - Suyu bulandırmayan muazzam bir şeffaflık */
+            z-index: 0;                                                                                                                                                                                                                                                                                                                                                                                                                                                                               /* Yazıların arkasında kalmasını sağlar */
+            pointer-events: none;                                                                                                                                                                                                                                                                                                                                                                                                                                                                               /* Yanlışlıkla seçilmeyi engeller */
         }
 
 
         .finale p { font-size: 1.6rem; line-height: 2; max-width: 1200px; color: #444; padding-bottom: 0px; padding-top: 50px; text-align: justify; }
-                                                                                                                                                                                     /* METİN KRİPTOGRAMI TASARIMI */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                              /* METİN KRİPTOGRAMI TASARIMI */
         .cryptogram-container {
             background: rgba(255, 255, 255, 0.6);
             border: 1px #222 solid ;
@@ -322,12 +321,12 @@
             border-radius: 15px;
             margin-bottom: 30px;
             text-align: center;
-            max-width: 700px;                                                                                                                                                                                      /* Cümle uzun olduğu için kutuyu biraz genişlettik */
+            max-width: 800px;                                                                                                                                                                                                                                                                                                                                                                                                                                                                               /* Cümle uzun olduğu için kutuyu biraz genişlettik */
             margin-left: auto;
             margin-right: auto;
             box-shadow: 0 10px 25px rgba(0,0,0,0.03);
         }
-                                                                                                                                                                                             /* DAKTİLO EFEKTİ İMLECİ */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      /* DAKTİLO EFEKTİ İMLECİ */
         .typewriter-box::after {
             content: '|';
             animation: blink 1s infinite;
@@ -355,12 +354,12 @@
             font-style: italic;
         }
 
-                                                                                                                                                                                             /* Şifreli Kelimelerin Görünümü */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      /* Şifreli Kelimelerin Görünümü */
         .cipher-text {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 15px 25px;                                                                                                                                                                                      /* Kelimeler arası geniş boşluk */
+            gap: 15px 25px;                                                                                                                                                                                                                                                                                                                                                                                                                                                                               /* Kelimeler arası geniş boşluk */
             margin-bottom: 35px;
         }
 
@@ -372,16 +371,15 @@
             font-family: 'Montserrat', monospace; 
             font-size: 1.4rem;
             font-weight: 600;
-            letter-spacing: 6px;                                                                                                                                                                                      /* Altına harf yazabilmesi için harf arası boşluklar */
+            letter-spacing: 6px;                                                                                                                                                                                                                                                                                                                                                                                                                                                                               /* Altına harf yazabilmesi için harf arası boşluklar */
             color: #2a2a2a;
             border-bottom: 3px solid #f9f9f9; 
         }
 
-                                                                                                                                                                                             /* İpucu Kutusunun Görünümü */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      /* İpucu Kutusunun Görünümü */
         .cipher-hint {
             
-            border-left: 4px solid #ff2a4b;
-            padding: 18px 25px;
+            padding: 0px 35px;
             border-radius: 0 8px 8px 0;
             display: inline-block;
             font-size: 1.1rem;
@@ -394,7 +392,7 @@
             font-size: 0.9rem;
             color: #777;
         }   
-                                                                                                                                                                                             /* GİZLİ KUTU TASARIMI */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      /* GİZLİ KUTU TASARIMI */
         .secret-box, .secret-message {
             background: rgba(255, 255, 255, 0.8);
             padding: 50px 40px;
@@ -409,7 +407,7 @@
         .lock-icon, .unlock-icon {
             font-size: 3.5rem;
             margin-bottom: 40px;
-            animation: floatLock 3s ease-in-out infinite;                                                                                                                                                                                      /* İkonu hafifçe havada süzülür gibi yapar */
+            animation: floatLock 3s ease-in-out infinite;                                                                                                                                                                                                                                                                                                                                                                                                                                                                               /* İkonu hafifçe havada süzülür gibi yapar */
         }
 
         @keyframes floatLock {
@@ -432,7 +430,7 @@
             text-align: justify;
         }
 
-                                                                                                                                                                                             /* ŞİFRE GİRİŞ ALANI */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      /* ŞİFRE GİRİŞ ALANI */
         .input-group {
             display: flex;
             gap: 15px;
@@ -479,7 +477,7 @@
             color: #ff2a4b;
             font-size: 0.9rem;
             font-weight: 600;
-            opacity: 0;                                                                                                                                                                                      /* Başlangıçta görünmez */
+            opacity: 0;                                                                                                                                                                                                                                                                                                                                                                                                                                                                               /* Başlangıçta görünmez */
             transition: opacity 0.3s;
             margin-bottom: 0;
         }
@@ -491,34 +489,34 @@
             .frame:not(:has(img)) { min-height: 300px !important; width: 100% !important; }
             .g-1 .frame { max-width: 100%; }
         }
-                                                                                                                                                                                             /* --- GİRİŞ SAYFASI YENİ EKLENTİLER --- */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      /* --- GİRİŞ SAYFASI YENİ EKLENTİLER --- */
         .intro-section {
-            position: relative;                                                                                                                                                                                      /* Scroll butonu için gerekli */
+            position: relative;                                                                                                                                                                                                                                                                                                                                                                                                                                                                               /* Scroll butonu için gerekli */
         }
 
-                                                                                                                                                                                             /* 1. 3D Parallax Kapsayıcısı */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      /* 1. 3D Parallax Kapsayıcısı */
         .parallax-container {
             position: relative;
             transform-style: preserve-3d;
-            transition: transform 0.1s ease-out;                                                                                                                                                                                      /* Fare hareketine pürüzsüz tepki */
+            transition: transform 0.1s ease-out;                                                                                                                                                                                                                                                                                                                                                                                                                                                                               /* Fare hareketine pürüzsüz tepki */
             max-width: 450px;
             margin: 0 auto;
         }
 
-                                                                                                                                                                                             /* 2. Cam Efektli (Glassmorphism) Rozet */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      /* 2. Cam Efektli (Glassmorphism) Rozet */
         .glass-badge {
             position: absolute;
             bottom: -15px;
             left: -25px;
-            background: rgba(255, 255, 255, 0.45);                                                                                                                                                                                      /* Yarı şeffaf beyaz */
-            backdrop-filter: blur(12px);                                                                                                                                                                                      /* Arkasını buzlu cam gibi flu yapar */
+            background: rgba(255, 255, 255, 0.45);                                                                                                                                                                                                                                                                                                                                                                                                                                                                               /* Yarı şeffaf beyaz */
+            backdrop-filter: blur(12px);                                                                                                                                                                                                                                                                                                                                                                                                                                                                               /* Arkasını buzlu cam gibi flu yapar */
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.6);
             padding: 12px 22px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             z-index: 10;
-            transform: translateZ(40px);                                                                                                                                                                                      /* 3D efektinde rozetin havada (önde) durmasını sağlar */
+            transform: translateZ(40px);                                                                                                                                                                                                                                                                                                                                                                                                                                                                               /* 3D efektinde rozetin havada (önde) durmasını sağlar */
         }
 
         .glass-badge span {
@@ -529,7 +527,7 @@
             letter-spacing: 0.5px;
         }
 
-                                                                                                                                                                                             /* 3. Aşağı Kaydır (Scroll) İkonu */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      /* 3. Aşağı Kaydır (Scroll) İkonu */
         .scroll-down {
             position: absolute;
             bottom: 30px;
@@ -541,7 +539,7 @@
             gap: 8px;
             opacity: 0.7;
             animation: bounce 2s infinite ease-in-out;
-            pointer-events: none;                                                                                                                                                                                      /* Tıklanmayı engeller, yazıyı bozmaz */
+            pointer-events: none;                                                                                                                                                                                                                                                                                                                                                                                                                                                                               /* Tıklanmayı engeller, yazıyı bozmaz */
         }
 
         .scroll-down span {
@@ -553,7 +551,7 @@
             font-weight: 600;
         }
 
-                                                                                                                                                                                             /* Şık Mouse İkonu Çizimi */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      /* Şık Mouse İkonu Çizimi */
         .mouse-icon {
             width: 22px;
             height: 36px;
@@ -572,7 +570,7 @@
             height: 6px;
             background: #555;
             border-radius: 2px;
-            animation: scrollWheel 2s infinite;                                                                                                                                                                                      /* Tekerleğin aşağı kayma animasyonu */
+            animation: scrollWheel 2s infinite;                                                                                                                                                                                                                                                                                                                                                                                                                                                                               /* Tekerleğin aşağı kayma animasyonu */
         }
 
         @keyframes bounce {
@@ -585,17 +583,17 @@
             100% { transform: translate(-50%, 15px); opacity: 0; }
         }
 
-                                                                                                                                                                                             /* Mobil Uyum Düzeltmesi */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      /* Mobil Uyum Düzeltmesi */
         @media (max-width: 900px) {
             .glass-badge { bottom: -10px; left: 10px; padding: 10px 18px; }
             .scroll-down { bottom: 15px; }
         }
-                                                                                                                                                                                             /* --- 1. SİNEMATİK AÇILIŞ PERDESİ --- */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      /* --- 1. SİNEMATİK AÇILIŞ PERDESİ --- */
         #preloader {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: #fdfbf7;                                                                                                                                                                                      /* Sitenin krem/fildişi tonu */
-            z-index: 99999;                                                                                                                                                                                      /* Her şeyin üstünde durması için */
+            background: #fdfbf7;                                                                                                                                                                                                                                                                                                                                                                                                                                                                               /* Sitenin krem/fildişi tonu */
+            z-index: 99999;                                                                                                                                                                                                                                                                                                                                                                                                                                                                               /* Her şeyin üstünde durması için */
             display: flex;
             align-items: center; justify-content: center;
             transition: opacity 0.8s ease, visibility 0.8s ease;
@@ -621,28 +619,28 @@
             100% { transform: scale(1.15); }
         }
 
-                                                                                                                                                                                             /* --- 2. SAYFA İLERLEME ÇUBUĞU --- */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      /* --- 2. SAYFA İLERLEME ÇUBUĞU --- */
         #progress-bar {
             position: fixed;
             top: 0; left: 0;
             height: 4px;
-            background: linear-gradient(to right, #ffb6b9, #ff2a4b);                                                                                                                                                                                      /* Pembe'den kırmızıya şık geçiş */
+            background: linear-gradient(to right, #ffb6b9, #ff2a4b);                                                                                                                                                                                                                                                                                                                                                                                                                                                                               /* Pembe'den kırmızıya şık geçiş */
             width: 0%;
             z-index: 99990;
             transition: width 0.1s ease-out;
             border-radius: 0 2px 2px 0;
         }
 
-                                                                                                                                                                                             /* --- 3. SÜZÜLEREK EKRANA GELME (REVEAL) EFEKTİ --- */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      /* --- 3. SÜZÜLEREK EKRANA GELME (REVEAL) EFEKTİ --- */
         .reveal {
             opacity: 0;
-            transform: translateY(40px);                                                                                                                                                                                      /* Başlangıçta 40 piksel aşağıda durur */
-            transition: all 0.9s cubic-bezier(0.5, 0, 0, 1);                                                                                                                                                                                      /* Çok yumuşak bir kayma grafiği */
+            transform: translateY(40px);                                                                                                                                                                                                                                                                                                                                                                                                                                                                               /* Başlangıçta 40 piksel aşağıda durur */
+            transition: all 0.9s cubic-bezier(0.5, 0, 0, 1);                                                                                                                                                                                                                                                                                                                                                                                                                                                                               /* Çok yumuşak bir kayma grafiği */
         }
         
         .reveal.active {
             opacity: 1;
-            transform: translateY(0);                                                                                                                                                                                      /* Kendi yerine yerleşir */
+            transform: translateY(0);                                                                                                                                                                                                                                                                                                                                                                                                                                                                               /* Kendi yerine yerleşir */
         }
     </style>
 
@@ -655,7 +653,7 @@
     <section class="intro-section">
         <div class="intro-left">
             <h1>Ömer ve Bilge’nin Sonsuz Sayılı Günleri</h1>
-            <p>Güzel sevgilim ile şimdiye kadar yaşadığımız güzel anılardan oluşan bir foto galeri ve daha nicesi.</p>
+            
             <div class="intro-mini-gallery">
                 <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 11.59.10 (5).jpeg" alt=""></span></div>
                 <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 12.01.34 (6).jpeg" alt=""></span></div>
@@ -668,7 +666,7 @@
             <div class="parallax-container" id="parallax-box">
                  <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 12.01.38 (7).jpeg" alt=""></span></div>
                  <div class="glass-badge">
-                    <span>❤️ Balam ve Ben...</span>
+                    <span>❤️ Turn My Swag On...</span>
                 </div>
         </div>
         <div class="scroll-down">
@@ -737,7 +735,7 @@
                 <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 11.59.10 (7).jpeg" alt=""></span></div>
                 <div class="frame"><span><img src="dikeyfotolar/WhatsApp Image 2026-08-15 at 11.59.10 (8).jpeg" alt=""></span></div><div class="frame"><span><img src="dikeyfotolar/WhatsApp Image 2026-08-15 at 11.59.11.jpeg" alt=""></span></div>
             </div>
-            <div class="memory-text"><h2>Çiçekli bilge</h2><p>Bu daha çiçeği fark etmediğin fotoğrafa baktıkça çok gülüyorum. Bilmiyorum artık o an aklından ne geçiyordu ama çok üzgün duruyorsun. Ondan sonra çiçeği sevmene çok sevinmiştim. Hayatımda ilk defa birine böyle çiçek alıp vermiştim çok heyecanlıydı. Ve aşağıya bahane uydurup da gidemiyordum zar zor kaçtım koşa koşa gittim. Şu an hatırlamıyorum hangi bahaneyle gitmiştim ama yine de işe yaradı...s</p></div>
+            <div class="memory-text"><h2>Çiçekli bilge</h2><p>Bu daha çiçeği fark etmediğin fotoğrafa baktıkça çok gülüyorum. Bilmiyorum artık o an aklından ne geçiyordu ama çok üzgün duruyorsun. Ondan sonra çiçeği sevmene çok sevinmiştim. Hayatımda ilk defa birine böyle çiçek alıp vermiştim çok heyecanlıydı. Ve aşağıya bahane uydurup da gidemiyordum zar zor kaçtım koşa koşa gittim. Şu an hatırlamıyorum hangi bahaneyle gitmiştim ama yine de işe yaradı...</p></div>
         </div>
     </section>
 
@@ -759,7 +757,7 @@
                 <div class="frame"><span><img src="yatayfotolar/images.jpg" alt=""></span></div>
                 <div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 12.01.38 (4).jpeg" alt=""></span></div><div class="frame"><span><img src="yatayfotolar/WhatsApp Image 2026-08-15 at 12.01.38 (3).jpeg" alt=""></span></div>
             </div>
-            <div class="memory-text"><h2>Çok bir şey dememe gerek yok sanırım</h2><p>Doyuyo! markasının Friends Combo menüsü (2 acılı tenders, 2 cajun tenders, 2 original tenders, 2 tavuk sandviç, patates kızartması, coleslaw, turşu, soslar ve 2 içecek) toplamda yaklaşık 2200 - 2500 kalori (kcal) civarındadır.</p></div>
+            <div class="memory-text"><h2>DOYUYO!</h2><p>Bu Friends Combo menü gerçekten bu kadar lezzetli mi yoksa sürekli seninle birlikte yiyorum diye mi bu kadar hoşuma gidiyor bilmiyorum ama bildiğim tek bir şey var, o da bu boka bayılıyorum... Ama yani başka herhangi bir insanla yesem bu kadar zevk alacağımı düşünmüyorum. Beni bu menüyle tanıştırdığın için ve de bir çok kez  özellikle sen ısmarladığın için teşekkür ederim.. <br><br>Doyuyo! markasının Friends Combo menüsü (2 acılı tenders, 2 cajun tenders, 2 original tenders, 2 tavuk sandviç, patates kızartması, coleslaw, turşu, soslar ve 2 içecek) toplamda yaklaşık 2200 - 2500 kalori (kcal) civarındadır. </p></div>
         </div>
     </section>
 
@@ -860,8 +858,7 @@
     <section class="section">
         <div class="memory-content locations-container">
             <div class="locations-header">
-                <h2>Dünyanın EN önemli 8 anı</h2>
-                <p>Bizim için özel olan o anlar...</p>
+                <h2>Dünyanın EN önemli 9 anı!!</h2>
             </div>
             
             <div class="timeline">
@@ -936,6 +933,14 @@
                         <p>Maalesef bunda yokum :(</p>
                     </div>
                 </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">🌊</div>
+                    <div class="timeline-content">
+                        <h3>BERABER GİDECEĞİMİZ TATİL</h3>
+                        <span class="location-date">7 Eylül - Kuşadası</span>
+                        <p>Tarihte görülebilecek en iyi tatil olacak!</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -952,11 +957,9 @@
             
 <section class="section">
     <div class="cryptogram-container" id="crypto-ui">
-                <h3>Küçük Bir Cryptogram Oyunu</h3>
-                <p>Aşağ(ğ)ıdaki şifrelenmiş metni deşifre ederek kilidi açmalısın.</p>
                 
-                <!-- Şifrelenmiş Metin -->
-                <!-- Şifrelenmiş Metin (18 AĞUSTOS VERSİYONU) -->
+                <p>Aşağ(ğ)ıdaki şifrelenmiş metni çözerek kilidi aç.</p>
+                
                 <div class="cipher-text">
                     <span class="word">MPTPCP</span>
                     <span class="word">YVHYM</span>
@@ -973,9 +976,10 @@
                 
                 <!-- İpucu -->
                 <div class="cipher-hint">
-                    <p><strong>İpucu:</strong> İlk kelime olan <strong>"M P T P C P"</strong> aslında <strong>"KİLİDİ"</strong> demektir.</p>
+                    <p><strong>İpucu:</strong> İlk kelime olan <strong>"M P T P C P"</strong> <strong>"KİLİDİ"</strong> demek.</p>
                 </div>
-            </div>
+                
+            </div>  
 </section>
     <!-- GİZLİ HEDİYE / ŞİFRELİ KUTU BÖLÜMÜ -->
     <section class="section">
@@ -984,8 +988,8 @@
             <!-- KİLİT EKRANI (Şifre İsteyen Kısım) -->
             <div class="secret-box" id="secret-ui">
                 <div class="lock-icon">🔒</div>
-                <h2>Çok Gizli Mesaj</h2>
-                <p>Bu  bölmeyi açmak için yukarıdaki şifreyi çözmelisin.</p>
+                <h2>Aşırı Gizli Mesaj</h2>
+                <p>Bu mesajı görebilmek için şifreyi çözmen gerekiyor.</p>
                 <div class="input-group">
                     <input type="password" id="secret-code" maxlength="4" placeholder="****">
                     <button onclick="checkCode()">Kilidi Aç</button>
